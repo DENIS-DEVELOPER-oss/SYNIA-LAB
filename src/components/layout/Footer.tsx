@@ -1,6 +1,6 @@
 
 import Link from "next/link";
-import { Facebook, Linkedin, Twitter, Instagram, Youtube, Rss, Mail, Phone } from "lucide-react"; // Added Rss, Mail, Phone
+import { Facebook, Linkedin, Twitter, Instagram, Youtube, Rss, Mail, Phone } from "lucide-react";
 import { SITE_NAME } from "@/lib/constants";
 
 const socialLinks = [
@@ -13,8 +13,8 @@ const socialLinks = [
 
 const contactLinks = [
    { href: "mailto:info@synialab.com", icon: Mail, label: "info@synialab.com" },
-   { href: "tel:+1234567890", icon: Phone, label: "+1 234 567 890" },
-   { href: "/blog/rss.xml", icon: Rss, label: "Blog RSS" }, // Assuming an RSS feed might exist
+   { href: "tel:+1234567890", icon: Phone, label: "+1 234 567 890" }, // Ejemplo, ajustar número
+   { href: "/blog/rss.xml", icon: Rss, label: "Blog RSS" },
 ];
 
 export function Footer() {
@@ -51,8 +51,8 @@ export function Footer() {
               <ul className="mt-4 space-y-2">
                 <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
                 <li><Link href="/portfolio" className="hover:text-primary transition-colors">Portafolio</Link></li>
-                <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li> {/* Example additional link */}
-                <li><Link href="/terms" className="hover:text-primary transition-colors">Términos</Link></li> {/* Example additional link */}
+                <li><Link href="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+                <li><Link href="/terms" className="hover:text-primary transition-colors">Términos</Link></li>
               </ul>
             </div>
             <div>
