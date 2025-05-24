@@ -10,12 +10,12 @@ export function HeroSection() {
     <section className="relative py-20 md:py-32 text-center overflow-hidden">
       {/* Imagen de fondo */}
       <Image
-        src="https://placehold.co/1920x1080.png" 
-        alt="Fondo de la sección Hero"
+        src="https://es.wallpapers.com/images/hd/ciudad-oscura-4k-mczpazmdr0ydz9q7.jpg" 
+        alt="Fondo de la sección Hero - Ciudad Oscura"
         layout="fill"
         objectFit="cover"
         className="absolute inset-0 z-0"
-        data-ai-hint="modern office"
+        data-ai-hint="dark city" // Updated hint
         priority // Cargar la imagen con prioridad ya que es LCP
       />
       {/* Superposición azul semitransparente más intensa */}
