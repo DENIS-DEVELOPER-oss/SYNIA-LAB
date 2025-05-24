@@ -57,7 +57,6 @@ export default function HomePage() {
                         layout="fill" 
                         objectFit="cover"
                         data-ai-hint={service.imageHint}
-                        className="transition-transform duration-300 group-hover:scale-110"
                     />
                 </div>
                 <CardHeader className="text-center">
