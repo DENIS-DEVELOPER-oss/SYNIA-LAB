@@ -36,7 +36,7 @@ export function HeroSection() {
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto transition-transform hover:scale-105 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+          <Button asChild size="lg" className="w-full sm:w-auto transition-transform hover:scale-105 bg-sky-500 hover:bg-sky-600 text-primary-foreground border-2 border-primary-foreground">
             <Link href="/courses">Explorar Cursos</Link>
           </Button>
           <Button asChild size="lg" variant="ghost" className="w-full sm:w-auto transition-transform hover:scale-105 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
