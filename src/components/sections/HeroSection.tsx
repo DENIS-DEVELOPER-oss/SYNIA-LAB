@@ -18,9 +18,6 @@ export function HeroSection() {
         data-ai-hint="dark city"
         priority // Cargar la imagen con prioridad ya que es LCP
       />
-      {/* Superposición azul semitransparente más intensa */}
-      <div className="absolute inset-0 bg-[#4fc3f7]/[0.2] z-10"></div>
-
       {/* Contenido de la sección Hero */}
       <div className="container mx-auto px-4 relative z-20">
         <h1 className="text-4xl font-extrabold tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
