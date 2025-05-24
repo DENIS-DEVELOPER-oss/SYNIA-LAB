@@ -50,7 +50,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
               <Card key={service.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
-                <div className="relative h-48 w-full">
+                <div className="relative h-48 w-full overflow-hidden"> {/* Added overflow-hidden here */}
                     <Image 
                         src={service.image} 
                         alt={service.title} 
@@ -78,7 +78,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">¿Listo para Transformar tus Ideas?</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
@@ -94,4 +94,3 @@ export default function HomePage() {
     </>
   );
 }
-

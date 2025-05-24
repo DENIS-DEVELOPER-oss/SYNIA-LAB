@@ -6,25 +6,25 @@ import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-background to-muted py-20 md:py-32">
+    <section className="bg-gradient-to-br from-primary/70 via-sky-500/50 to-accent/70 dark:from-primary/80 dark:via-sky-700/60 dark:to-accent/80 py-20 md:py-32">
       <div className="container mx-auto px-4 text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
           <span className="block xl:inline">{SITE_NAME}</span>
         </h1>
-        <p className="mt-6 max-w-md mx-auto text-lg font-light text-gray-600 dark:text-gray-400 sm:text-xl md:mt-8 md:max-w-3xl">
+        <p className="mt-6 max-w-md mx-auto text-lg font-light text-gray-100 dark:text-gray-300 sm:text-xl md:mt-8 md:max-w-3xl">
           {SITE_SLOGAN}
         </p>
         <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center sm:space-x-4 space-y-4 sm:space-y-0">
-          <Button asChild size="lg" className="w-full sm:w-auto group transition-transform hover:scale-105">
+          <Button asChild size="lg" className="w-full sm:w-auto group transition-transform hover:scale-105 bg-white text-primary hover:bg-gray-100">
             <Link href="/services">
               Nuestros Servicios
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto transition-transform hover:scale-105 border-primary hover:bg-primary/10">
+          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto transition-transform hover:scale-105 border-white text-white hover:bg-white/20 hover:text-white">
             <Link href="/courses">Explorar Cursos</Link>
           </Button>
-          <Button asChild size="lg" variant="ghost" className="w-full sm:w-auto transition-transform hover:scale-105 hover:bg-primary/5">
+          <Button asChild size="lg" variant="ghost" className="w-full sm:w-auto transition-transform hover:scale-105 text-white hover:bg-white/10 hover:text-white">
             <Link href="/auth/signin">Plataforma Usuario</Link>
           </Button>
         </div>
