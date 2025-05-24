@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle, Lightbulb, BarChart3, Code, BookOpen, GraduationCap } from "lucide-react"; // Added more icons
+import { Code, BookOpen, GraduationCap } from "lucide-react"; // Added more icons
 
 const featuredServices = [
   {
@@ -77,7 +77,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
+      <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">¿Listo para Transformar tus Ideas?</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
