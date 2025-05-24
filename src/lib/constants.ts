@@ -16,5 +16,4 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const SITE_NAME = "SYNIA LAB";
-export const SITE_SLOGAN = "Ciencia, Software y Publicaciones que Transforman";
-
+export const SITE_SLOGAN = "Tecnología y Conocimiento que Transforman";
