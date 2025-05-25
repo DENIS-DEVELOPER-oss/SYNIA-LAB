@@ -1,41 +1,43 @@
 
 import { PageHeader } from "@/components/shared/PageHeader";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, BookText, GraduationCap, CheckSquare } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
+import { Code, GraduationCap, CheckSquare, FileText, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    id: "software-development",
-    title: "Desarrollo de Software Personalizado",
-    description: "Creamos soluciones de software a medida, desde aplicaciones web y móviles hasta sistemas empresariales complejos, utilizando las últimas tecnologías para garantizar rendimiento, escalabilidad y seguridad.",
-    icon: <Code className="h-12 w-12 text-primary mb-4" />,
-    image: "https://placehold.co/600x400.png",
-    imageHint: "coding development"
-  },
-  {
-    id: "academic-production",
-    title: "Producción de Artículos Científicos y Libros",
-    description: "Apoyamos en la redacción, edición y publicación de artículos científicos, capítulos de libros y ensayos. Transformamos tu investigación en conocimiento accesible y de alto impacto.",
-    icon: <BookText className="h-12 w-12 text-primary mb-4" />,
-    image: "https://placehold.co/600x400.png",
-    imageHint: "academic books"
-  },
-  {
     id: "thesis-advisory",
-    title: "Asesoría de Tesis (Pregrado, Maestría, Doctorado)",
-    description: "Ofrecemos acompañamiento integral en todas las etapas de tu tesis, desde la elección del tema hasta la sustentación. Nuestros expertos te guiarán para asegurar un trabajo de calidad.",
+    title: "Asesoría en Tesis",
+    description: "Orientación personalizada para tesis de pregrado, maestría y doctorado, desde la elección del tema y desarrollo metodológico hasta la preparación para la sustentación.",
     icon: <GraduationCap className="h-12 w-12 text-primary mb-4" />,
     image: "https://placehold.co/600x400.png",
-    imageHint: "student graduation"
+    imageHint: "student thesis graduation"
   },
   {
-    id: "journal-publishing",
-    title: "Publicación en Revistas Académicas (Scielo, Q3, Q4)",
-    description: "Te asistimos en el proceso de publicación en revistas indexadas de prestigio. Maximizamos las posibilidades de aceptación de tu manuscrito en Scielo, Q3, Q4 y otras.",
+    id: "software-development",
+    title: "Desarrollo de Software",
+    description: "Soluciones tecnológicas a medida para tus necesidades académicas, de investigación o institucionales. Creamos aplicaciones web, móviles y sistemas de escritorio.",
+    icon: <Code className="h-12 w-12 text-primary mb-4" />,
+    image: "https://placehold.co/600x400.png",
+    imageHint: "coding software interface"
+  },
+  {
+    id: "scientific-publishing",
+    title: "Publicación de Artículos Científicos",
+    description: "Apoyo integral en la redacción, edición y selección de revistas indexadas (Scielo, Scopus Q3, Q4). Te acompañamos en el proceso editorial para aumentar tus posibilidades de éxito.",
     icon: <CheckSquare className="h-12 w-12 text-primary mb-4" />,
     image: "https://placehold.co/600x400.png",
-    imageHint: "journal document"
+    imageHint: "scientific journal document"
+  },
+  {
+    id: "educational-works",
+    title: "Producción de Trabajos Educativos",
+    description: "Elaboración de Ensayos, Monografías, Informes de investigación, Proyectos de innovación y otros trabajos académicos, con rigor metodológico y altos estándares de calidad.",
+    icon: <FileText className="h-12 w-12 text-primary mb-4" />,
+    image: "https://placehold.co/600x400.png",
+    imageHint: "academic writing report"
   },
 ];
 
@@ -66,6 +68,14 @@ export default function ServicesPage() {
               <CardContent className="flex-grow">
                 <CardDescription className="text-lg text-center">{service.description}</CardDescription>
               </CardContent>
+              <CardFooter className="pt-4 pb-6 justify-center">
+                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform hover:scale-105">
+                  <Link href={`/contact?service=${encodeURIComponent(service.title)}`}>
+                    Solicitar Servicio
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
           ))}
         </div>
