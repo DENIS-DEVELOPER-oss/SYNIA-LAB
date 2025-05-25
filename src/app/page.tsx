@@ -126,7 +126,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24 bg-blue-50"> {/* Changed from bg-muted */}
         <div className="container mx-auto px-4">
           <PageHeader
             title="Producciones Disponibles"
@@ -188,7 +188,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-16 md:py-24 bg-green-50"> {/* Changed from bg-muted */}
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">¿Listo para Transformar tus Ideas?</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
