@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GraduationCap, Code, FileText, ArrowRight, Calculator, BookOpenCheck, Lightbulb } from "lucide-react";
+import { GraduationCap, Code, FileText, ArrowRight, Calculator, BookOpenCheck, Lightbulb, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles";
@@ -68,7 +68,7 @@ export default function HomePage() {
                 <Card
                   className={cn(
                     "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
-                    "bg-card" // Removed group-hover:border-2 group-hover:border-primary for a cleaner look on these
+                    "bg-card"
                   )}
                 >
                   <div className={cn(
@@ -140,7 +140,7 @@ export default function HomePage() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <PageHeader
-            title="Conviértete en RENACYT"
+            title="Investigador Renacyt"
             className="mb-12 text-center"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -156,7 +156,7 @@ export default function HomePage() {
                   Acceso directo al formulario y a la guía paso a paso con los requisitos.
                 </CardDescription>
               </CardContent>
-              <CardFooter className="pt-4 pb-6">
+              <CardFooter className="pt-4 pb-6 justify-center">
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform hover:scale-105">
                   {/* TODO: Update link to actual postulation page */}
                   <Link href="/renacyt/postulacion">
@@ -177,7 +177,7 @@ export default function HomePage() {
                   Herramienta interactiva que permite estimar la clasificación RENACYT antes de enviar la solicitud.
                 </CardDescription>
               </CardContent>
-              <CardFooter className="pt-4 pb-6">
+              <CardFooter className="pt-4 pb-6 justify-center">
                 <Button asChild variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent transition-transform hover:scale-105">
                   {/* TODO: Update link to actual calculator tool */}
                   <Link href="/renacyt/calculadora">
