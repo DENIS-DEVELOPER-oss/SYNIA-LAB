@@ -50,8 +50,8 @@ const bookChapterItems: ProductionItem[] = [
     ],
     category: "Capítulo de Libro", 
     thematicArea: "Ingeniería de Software", 
-    demoUrl: "/portfolio/articles/cl1", // Link to the chapter or abstract page
-    demoLinkText: "Leer resumen", // This text won't be used if "Ver detalles" is implemented
+    demoUrl: "/portfolio/articles/cl1", 
+    demoLinkText: "Leer resumen", 
     peerReview: "Doble ciego",
     certification: "Certificado de publicación disponible",
     publishedDocumentUrl: "https://example.com/link-to-chapter-cl1",
@@ -73,6 +73,125 @@ const bookChapterItems: ProductionItem[] = [
     certification: "Incluido en libro certificado ISBN: 978-X-XXXXX-XX-X",
     publishedDocumentUrl: "https://example.com/link-to-chapter-cl2",
     publishedDocumentLabel: "Consultar en Repositorio Institucional",
+  },
+  {
+    id: "cl3",
+    title: "Innovación en Modelos de Negocio Digitales",
+    category: "Capítulo de Libro",
+    thematicArea: "Emprendimiento Digital",
+    summary: "Explora cómo la transformación digital está redefiniendo los modelos de negocio y creando nuevas oportunidades.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Negocios digitales", hint: "digital business" },
+        { src: "https://placehold.co/600x400.png", alt: "Innovación tecnológica", hint: "tech innovation" }
+    ],
+    demoUrl: "/portfolio/articles/cl3",
+    demoLinkText: "Leer resumen",
+    peerReview: "Simple ciego",
+    certification: "Certificado de autoría",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl3",
+    publishedDocumentLabel: "Acceder a través de Publicaciones Académicas S.A.",
+  },
+  {
+    id: "cl4",
+    title: "La Psicología del Usuario en Interfaces Web",
+    category: "Capítulo de Libro",
+    thematicArea: "UX/UI Design",
+    summary: "Un análisis sobre cómo los principios psicológicos influyen en el diseño de experiencias de usuario efectivas.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Diseño UX", hint: "UX design" },
+        { src: "https://placehold.co/600x400.png", alt: "Psicología del usuario", hint: "user psychology" }
+    ],
+    demoUrl: "/portfolio/articles/cl4",
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    certification: "Publicado en \"Avances en Diseño Interactivo\"",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl4",
+    publishedDocumentLabel: "Ver en Editorial Tecnológica",
+  },
+  {
+    id: "cl5",
+    title: "Big Data y su Aplicación en el Sector Salud",
+    category: "Capítulo de Libro",
+    thematicArea: "Salud Digital",
+    summary: "Investigación sobre el uso de grandes volúmenes de datos para mejorar diagnósticos y tratamientos médicos.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Big Data en salud", hint: "health big data" },
+        { src: "https://placehold.co/600x400.png", alt: "Análisis de datos médicos", hint: "medical data analysis" }
+    ],
+    demoUrl: "/portfolio/articles/cl5",
+    demoLinkText: "Leer resumen",
+    peerReview: "Revisado por pares expertos",
+    certification: "ISBN: 978-1-23456-78-9",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl5",
+    publishedDocumentLabel: "Disponible en Biblioteca Médica Central",
+  },
+  {
+    id: "cl6",
+    title: "Ciberseguridad en la Era del IoT",
+    category: "Capítulo de Libro",
+    thematicArea: "Seguridad Informática",
+    summary: "Desafíos y soluciones para proteger dispositivos conectados en el Internet de las Cosas.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Seguridad IoT", hint: "IoT security" },
+        { src: "https://placehold.co/600x400.png", alt: "Redes conectadas", hint: "connected networks" }
+    ],
+    demoUrl: "/portfolio/articles/cl6",
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    certification: "Publicación en \"Retos de Ciberseguridad Moderna\"",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl6",
+    publishedDocumentLabel: "Consultar Editorial Segura",
+  },
+  {
+    id: "cl7",
+    title: "Educación Virtual: Estrategias y Herramientas",
+    category: "Capítulo de Libro",
+    thematicArea: "Tecnología Educativa",
+    summary: "Guía práctica para la implementación efectiva de programas de educación a distancia.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Aula virtual", hint: "virtual classroom" },
+        { src: "https://placehold.co/600x400.png", alt: "Herramientas e-learning", hint: "e-learning tools" }
+    ],
+    demoUrl: "/portfolio/articles/cl7",
+    demoLinkText: "Leer resumen",
+    peerReview: "Revisión editorial",
+    certification: "ISBN: 978-3-16-148410-0",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl7",
+    publishedDocumentLabel: "Ver en Ediciones Futuro",
+  },
+  {
+    id: "cl8",
+    title: "Inteligencia Artificial y el Futuro del Trabajo",
+    category: "Capítulo de Libro",
+    thematicArea: "Inteligencia Artificial",
+    summary: "Análisis de cómo la IA está transformando el mercado laboral y las habilidades requeridas.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "IA en el trabajo", hint: "AI workplace" },
+        { src: "https://placehold.co/600x400.png", alt: "Automatización", hint: "automation future" }
+    ],
+    demoUrl: "/portfolio/articles/cl8",
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl8",
+    publishedDocumentLabel: "Editorial Progreso",
+  },
+  {
+    id: "cl9",
+    title: "Marketing Digital Basado en Datos",
+    category: "Capítulo de Libro",
+    thematicArea: "Marketing",
+    summary: "Estrategias para utilizar el análisis de datos en la optimización de campañas de marketing digital.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Datos de marketing", hint: "marketing data" },
+        { src: "https://placehold.co/600x400.png", alt: "Análisis de campañas", hint: "campaign analytics" }
+    ],
+    demoUrl: "/portfolio/articles/cl9",
+    demoLinkText: "Leer resumen",
+    peerReview: "Simple ciego",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl9",
+    publishedDocumentLabel: "Marketing Insights Press",
   },
 ];
 
@@ -148,6 +267,96 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://elsevier.com/computers-education/zzzz",
     publishedDocumentLabel: "Leer en Computers & Education",
+  },
+  {
+    id: "ar5",
+    title: "Privacidad de Datos en el Metaverso: Riesgos y Estrategias",
+    category: "Artículo Científico",
+    thematicArea: "Privacidad Digital",
+    summary: "Un estudio sobre los nuevos desafíos de privacidad que plantea el metaverso y cómo abordarlos. Publicado en International Journal of Human-Computer Interaction.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Metaverso abstracto", hint: "metaverse abstract" },
+        { src: "https://placehold.co/600x400.png", alt: "Escudo de privacidad", hint: "privacy shield" }
+    ],
+    demoUrl: "/portfolio/articles/ar5",
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    indexations: "Scopus Q2, ACM Digital Library",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/ijhci.xxxx",
+    publishedDocumentLabel: "Ver en IJHCI",
+  },
+  {
+    id: "ar6",
+    title: "Modelos de Lenguaje a Gran Escala (LLMs) para la Generación de Contenido Académico",
+    category: "Artículo Científico",
+    thematicArea: "Inteligencia Artificial Generativa",
+    summary: "Investigación sobre la capacidad y limitaciones de los LLMs en la creación de textos académicos. Publicado en AI & Society.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Cerebro IA", hint: "AI brain" },
+        { src: "https://placehold.co/600x400.png", alt: "Texto generado por IA", hint: "AI generated text" }
+    ],
+    demoUrl: "/portfolio/articles/ar6",
+    demoLinkText: "Leer resumen",
+    peerReview: "Simple ciego",
+    indexations: "Scopus Q3, SpringerLink",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/aisociety.xxxx",
+    publishedDocumentLabel: "Ver en AI & Society",
+  },
+  {
+    id: "ar7",
+    title: "Impacto Socioeconómico de las Fintech en Mercados Emergentes",
+    category: "Artículo Científico",
+    thematicArea: "Tecnología Financiera",
+    summary: "Análisis del impacto de las tecnologías financieras en la inclusión y el desarrollo económico en países emergentes. Publicado en Journal of Emerging Markets Finance.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Fintech concepto", hint: "fintech concept" },
+        { src: "https://placehold.co/600x400.png", alt: "Gráfico de crecimiento económico", hint: "economic growth chart" }
+    ],
+    demoUrl: "/portfolio/articles/ar7",
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    indexations: "Web of Science Q4, EBSCO",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/jemf.xxxx",
+    publishedDocumentLabel: "Ver en JEMF",
+  },
+  {
+    id: "ar8",
+    title: "Uso de Realidad Aumentada para la Formación Profesional en Ingeniería",
+    category: "Artículo Científico",
+    thematicArea: "Realidad Aumentada",
+    summary: "Estudio sobre la efectividad de la realidad aumentada en la mejora del aprendizaje práctico en carreras de ingeniería. Publicado en IEEE Transactions on Education.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Ingeniero con AR", hint: "engineer AR" },
+        { src: "https://placehold.co/600x400.png", alt: "Simulación AR", hint: "AR simulation" }
+    ],
+    demoUrl: "/portfolio/articles/ar8",
+    demoLinkText: "Leer resumen",
+    peerReview: "Revisión por pares rigurosa",
+    indexations: "Scopus Q1, IEEE Xplore",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/ieee.edu.xxxx",
+    publishedDocumentLabel: "Ver en IEEE Transactions on Education",
+  },
+  {
+    id: "ar9",
+    title: "Algoritmos de Recomendación Personalizada en Plataformas de E-commerce",
+    category: "Artículo Científico",
+    thematicArea: "Machine Learning",
+    summary: "Comparativa de diferentes algoritmos de recomendación y su impacto en la experiencia del usuario y ventas en e-commerce. Publicado en Expert Systems with Applications.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Sistema de recomendación", hint: "recommendation system" },
+        { src: "https://placehold.co/600x400.png", alt: "Compras online", hint: "online shopping" }
+    ],
+    demoUrl: "/portfolio/articles/ar9",
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    indexations: "Scopus Q1, ScienceDirect",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/eswa.xxxx",
+    publishedDocumentLabel: "Ver en Expert Systems with Applications",
   }
 ];
 
@@ -204,3 +413,4 @@ export default function PortfolioPage() {
 // The demoUrl fields for publications now point to an abstract or article page.
 // The `ProductionCard` will handle the "Ver detalles" modal.
     
+
