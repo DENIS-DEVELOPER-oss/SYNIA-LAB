@@ -1,10 +1,10 @@
 
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card"; // Removed CardHeader, CardContent
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, Send, GraduationCap } from "lucide-react"; // Updated icons
+import { Users, Send, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const featuredServices = [
@@ -13,14 +13,14 @@ const featuredServices = [
     description: "Experiencia de usuario fluida y accesible, con un diseño sencillo que facilita la navegación y el uso de todas sus funciones.",
     icon: Users,
     iconColor: "text-purple-600",
-    link: "/services#plataforma-intuitiva", // Updated link for consistency
+    link: "/services#plataforma-intuitiva",
     highlighted: false,
   },
   {
     title: "Cursos Actualizados",
     description: "Formación reciente y relevante, siempre al día con las últimas tendencias y conocimientos en tecnología y software.",
     icon: Send,
-    iconColor: "text-orange-500", // Icon color on the highlighted card
+    iconColor: "text-orange-500",
     link: "/courses",
     highlighted: true,
   },
@@ -29,7 +29,7 @@ const featuredServices = [
     description: "Profesionales experimentados en su campo que proporcionan orientación experta y apoyo personalizado para asegurar tu éxito en el aprendizaje.",
     icon: GraduationCap,
     iconColor: "text-blue-500",
-    link: "/about#equipo", // Updated link for consistency
+    link: "/about#equipo",
     highlighted: false,
   },
 ];
@@ -49,27 +49,27 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
-              <Card 
-                key={service.title} 
-                className={cn(
-                  "flex flex-col items-center text-center p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group h-full",
-                  service.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
-                )}
-              >
-                <div className={cn(
-                  "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
-                  service.highlighted ? "bg-primary-foreground" : "bg-muted border"
-                )}>
-                  <service.icon className={cn("h-12 w-12", service.highlighted ? service.iconColor : service.iconColor)} />
-                </div>
-                <CardTitle className={cn("text-2xl mb-3", service.highlighted ? "text-primary-foreground" : "text-card-foreground")}>
-                  {service.title}
-                </CardTitle>
-                <CardDescription className={cn("text-base flex-grow", service.highlighted ? "text-primary-foreground/90" : "text-muted-foreground")}>
-                  {service.description}
-                </CardDescription>
-                {/* "Saber más" button removed as per new design */}
-              </Card>
+              <Link key={service.title} href={service.link} className="block h-full">
+                <Card 
+                  className={cn(
+                    "flex flex-col items-center text-center p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group h-full",
+                    service.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
+                  )}
+                >
+                  <div className={cn(
+                    "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
+                    service.highlighted ? "bg-primary-foreground" : "bg-muted border"
+                  )}>
+                    <service.icon className={cn("h-12 w-12", service.highlighted ? service.iconColor : service.iconColor)} />
+                  </div>
+                  <CardTitle className={cn("text-2xl mb-3", service.highlighted ? "text-primary-foreground" : "text-card-foreground")}>
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className={cn("text-base flex-grow", service.highlighted ? "text-primary-foreground/90" : "text-muted-foreground")}>
+                    {service.description}
+                  </CardDescription>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
