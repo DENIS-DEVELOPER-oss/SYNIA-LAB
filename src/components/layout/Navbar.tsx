@@ -35,16 +35,16 @@ export function Navbar() {
   const UserAvatar = () => (
     <Avatar className="h-9 w-9">
       <AvatarImage src={user?.photoURL || undefined} alt={user?.displayName || user?.email || "User"} />
-      <AvatarFallback>
+      <AvatarFallback className="bg-primary-foreground/20 text-primary-foreground">
         {user?.email ? user.email.charAt(0).toUpperCase() : <UserCircle size={20} />}
       </AvatarFallback>
     </Avatar>
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/10 bg-primary text-primary-foreground">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
+        <Logo /> {/* Logo component will now render with light colors */}
         <nav className="hidden items-center space-x-2 md:flex">
           {NAV_LINKS.map((link) => (
             <Button
@@ -54,8 +54,8 @@ export function Navbar() {
               className={cn(
                 "text-sm font-medium",
                 pathname === link.href
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-primary-foreground font-semibold bg-primary-foreground/10"
+                  : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
               )}
             >
               <Link href={link.href}>{link.label}</Link>
@@ -67,11 +67,11 @@ export function Navbar() {
           {!loading && user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full">
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-primary-foreground/10">
                   <UserAvatar />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuContent className="w-56 bg-popover text-popover-foreground" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">
@@ -82,7 +82,7 @@ export function Navbar() {
                     </p>
                   </div>
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator />
+                <DropdownMenuSeparator className="bg-border" />
                 <DropdownMenuItem asChild>
                   <Link href="/dashboard">
                     <UserCircle className="mr-2 h-4 w-4" />
@@ -96,20 +96,20 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : !loading ? (
-            <Button asChild variant="default" size="sm">
+            <Button asChild variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
               <Link href="/auth/signin">
                 <LogIn className="mr-2 h-4 w-4" />
                 Iniciar Sesión
               </Link>
             </Button>
           ) : (
-             <div className="h-9 w-9 animate-pulse rounded-full bg-muted"></div>
+             <div className="h-9 w-9 animate-pulse rounded-full bg-primary-foreground/20"></div>
           )}
           
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-primary-foreground hover:bg-primary-foreground/10"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
@@ -120,14 +120,19 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full border-t bg-background shadow-lg md:hidden">
+        <div className="absolute top-16 left-0 w-full border-t border-primary-foreground/10 bg-primary shadow-lg md:hidden">
           <nav className="flex flex-col space-y-1 p-4">
             {NAV_LINKS.map((link) => (
               <Button
                 key={link.href}
-                variant={pathname === link.href ? "secondary" : "ghost"}
+                variant={pathname === link.href ? "default" : "ghost"}
                 asChild
-                className="justify-start"
+                className={cn(
+                  "justify-start text-primary-foreground",
+                  pathname === link.href 
+                  ? "bg-primary-foreground/20 hover:bg-primary-foreground/30" 
+                  : "hover:bg-primary-foreground/10"
+                )}
               >
                 <Link href={link.href}>{link.label}</Link>
               </Button>
@@ -138,3 +143,4 @@ export function Navbar() {
     </header>
   );
 }
+
