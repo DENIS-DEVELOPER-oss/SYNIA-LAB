@@ -179,7 +179,6 @@ export default function HomePage() {
               </CardContent>
               <CardFooter className="pt-4 pb-6 justify-center">
                 <Button asChild variant="outline" className="border-accent text-accent hover:bg-accent/10 hover:text-accent transition-transform hover:scale-105">
-                  {/* TODO: Update link to actual calculator tool */}
                   <Link href="/renacyt/calculadora">
                     Estimar Puntaje <Lightbulb className="ml-2 h-4 w-4" />
                   </Link>
@@ -206,3 +205,5 @@ export default function HomePage() {
     </MainLayout>
   );
 }
+
+    
