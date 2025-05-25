@@ -4,9 +4,10 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, Send, LogIn, GraduationCap } from "lucide-react"; // Added LogIn
+import { Users, Send, LogIn, GraduationCap } from "lucide-react"; 
 import { cn } from "@/lib/utils";
-import { MainLayout } from "@/components/layout/MainLayout"; // Import MainLayout
+import { MainLayout } from "@/components/layout/MainLayout";
+import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles"; // Import the new section
 
 const featuredServices = [
   {
@@ -30,7 +31,7 @@ const featuredServices = [
     description: "Accede a tu cuenta personalizada, gestiona tus cursos, servicios y progreso.",
     icon: LogIn,
     iconColor: "text-green-600",
-    link: "/auth/signin",
+    link: "/auth/signin", 
     highlighted: false,
   },
 ];
@@ -50,10 +51,10 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
-              <Link key={service.title} href={service.link} className="block h-full">
+              <Link key={service.title} href={service.link} className="block h-full group">
                 <Card 
                   className={cn(
-                    "flex flex-col items-center text-center p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group h-full",
+                    "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
                     service.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
                   )}
                 >
@@ -61,7 +62,7 @@ export default function HomePage() {
                     "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
                     service.highlighted ? "bg-primary-foreground" : "bg-muted border"
                   )}>
-                    <service.icon className={cn("h-12 w-12", service.iconColor)} />
+                    <service.icon className={cn("h-12 w-12", service.iconColor, service.highlighted ? (service.iconColor.includes("purple") ? "text-purple-600" : service.iconColor.includes("orange") ? "text-orange-500" : "text-green-600") : "")} />
                   </div>
                   <CardTitle className={cn("text-2xl mb-3", service.highlighted ? "text-primary-foreground" : "text-card-foreground")}>
                     {service.title}
@@ -77,6 +78,17 @@ export default function HomePage() {
       </section>
 
       <section className="py-16 md:py-24 bg-muted">
+        <div className="container mx-auto px-4">
+          <PageHeader
+            title="Producciones Disponibles"
+            subtitle="Explora los softwares desarrollados, capítulos de libros y artículos científicos publicados por SYNIA LAB."
+            className="mb-12 text-center"
+          />
+          <ProduccionesDisponibles />
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">¿Listo para Transformar tus Ideas?</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
