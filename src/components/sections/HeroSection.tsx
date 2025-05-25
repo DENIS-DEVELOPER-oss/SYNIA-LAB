@@ -58,7 +58,7 @@ export function HeroSection() {
               alt="Ilustración de tecnología y colaboración"
               width={600}
               height={450}
-              className="rounded-lg shadow-2xl"
+              className="w-full h-auto max-w-lg rounded-lg shadow-2xl"
               data-ai-hint="technology abstract illustration"
               priority
             />
