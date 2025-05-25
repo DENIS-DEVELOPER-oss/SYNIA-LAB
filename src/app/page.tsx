@@ -6,30 +6,31 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Users, Send, LogIn, GraduationCap } from "lucide-react"; // Added LogIn
 import { cn } from "@/lib/utils";
+import { MainLayout } from "@/components/layout/MainLayout"; // Import MainLayout
 
 const featuredServices = [
   {
     title: "Nuestros Servicios",
     description: "Experiencia de usuario fluida y accesible, con un diseño sencillo que facilita la navegación y el uso de todas sus funciones.",
-    icon: Users, // Kept Users icon
+    icon: Users,
     iconColor: "text-purple-600",
-    link: "/services", // Changed link
+    link: "/services",
     highlighted: false,
   },
   {
-    title: "Explorar Cursos", // Changed title to match button
+    title: "Explorar Cursos",
     description: "Formación reciente y relevante, siempre al día con las últimas tendencias y conocimientos en tecnología y software.",
-    icon: Send, // Kept Send icon
+    icon: Send,
     iconColor: "text-orange-500",
     link: "/courses",
     highlighted: true,
   },
   {
-    title: "Plataforma Usuario", // Changed title
-    description: "Accede a tu cuenta personalizada, gestiona tus cursos, servicios y progreso.", // Changed description
-    icon: LogIn, // Changed icon to LogIn
-    iconColor: "text-green-600", // Changed icon color
-    link: "/auth/signin", // Changed link
+    title: "Plataforma Usuario",
+    description: "Accede a tu cuenta personalizada, gestiona tus cursos, servicios y progreso.",
+    icon: LogIn,
+    iconColor: "text-green-600",
+    link: "/auth/signin",
     highlighted: false,
   },
 ];
@@ -37,7 +38,7 @@ const featuredServices = [
 
 export default function HomePage() {
   return (
-    <>
+    <MainLayout>
       <HeroSection />
       
       <section className="py-16 md:py-24 bg-background">
@@ -88,6 +89,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </>
+    </MainLayout>
   );
 }
