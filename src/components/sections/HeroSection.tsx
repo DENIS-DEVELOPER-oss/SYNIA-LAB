@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { SITE_SLOGAN, SITE_NAME } from "@/lib/constants";
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const carouselImages = [
@@ -14,6 +14,8 @@ const carouselImages = [
   { src: "https://placehold.co/600x400.png", alt: "Equipo colaborando en un proyecto", dataAiHint: "team collaboration" },
   { src: "https://placehold.co/640x480.png", alt: "Interfaz de software moderna", dataAiHint: "software interface" },
 ];
+
+const AUTO_SLIDE_INTERVAL = 3000; // 3 segundos
 
 export function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,6 +38,11 @@ export function HeroSection() {
     setModalImage(image);
     setIsModalOpen(true);
   };
+
+  useEffect(() => {
+    const slideInterval = setInterval(goToNext, AUTO_SLIDE_INTERVAL);
+    return () => clearInterval(slideInterval); // Limpiar el intervalo al desmontar
+  }, [currentIndex]); // Reiniciar el intervalo si currentIndex cambia manualmente
 
   return (
     <>
@@ -85,7 +92,7 @@ export function HeroSection() {
 
             {/* Columna Derecha: Carrusel de Imágenes */}
             <div className="flex justify-center md:justify-end">
-              <div className="relative w-full max-w-lg h-auto aspect-[4/3] rounded-lg shadow-2xl overflow-hidden">
+              <div className="relative w-full max-w-lg h-auto aspect-[4/3] rounded-lg shadow-2xl overflow-hidden group">
                 {carouselImages.map((image, index) => (
                   <div
                     key={index}
@@ -109,7 +116,7 @@ export function HeroSection() {
                   variant="ghost"
                   size="icon"
                   onClick={goToPrevious}
-                  className="absolute top-1/2 left-2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white hover:text-white"
+                  className="absolute top-1/2 left-2 -translate-y-1/2 z-20 bg-black/20 hover:bg-black/40 text-white hover:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   aria-label="Imagen anterior"
                 >
                   <ChevronLeft className="h-6 w-6" />
@@ -118,7 +125,7 @@ export function HeroSection() {
                   variant="ghost"
                   size="icon"
                   onClick={goToNext}
-                  className="absolute top-1/2 right-2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white hover:text-white"
+                  className="absolute top-1/2 right-2 -translate-y-1/2 z-20 bg-black/20 hover:bg-black/40 text-white hover:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   aria-label="Siguiente imagen"
                 >
                   <ChevronRight className="h-6 w-6" />
