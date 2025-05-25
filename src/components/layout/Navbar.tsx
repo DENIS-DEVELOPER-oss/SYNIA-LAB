@@ -112,7 +112,7 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : !loading ? (
-            <Button asChild variant="ghost" size="sm" className="text-primary hover:bg-accent/10">
+            <Button asChild variant="ghost" size="sm" className="text-primary hover:bg-accent/10 hidden md:inline-flex">
               <Link href="/auth/signin">
                 <LogIn className="mr-2 h-4 w-4" />
                 Iniciar Sesión
@@ -121,7 +121,6 @@ export function Navbar() {
           ) : (
              <div className="h-9 w-9 animate-pulse rounded-full bg-muted"></div> // Skeleton for loading state
           )}
-          {/* The mobile menu button was here previously, now it's on the left */}
         </div>
       </div>
 
