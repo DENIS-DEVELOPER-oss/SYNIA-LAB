@@ -4,32 +4,32 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, Send, LogIn } from "lucide-react"; 
+import { GraduationCap, Code, CheckSquare, ArrowRight } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles"; // Import the new section
+import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles";
 
 const featuredServices = [
   {
-    title: "Nuestros Servicios",
-    description: "Experiencia de usuario fluida y accesible, con un diseño sencillo que facilita la navegación y el uso de todas sus funciones.",
-    icon: Users,
-    iconColor: "text-purple-600",
-    link: "/services",
+    title: "Asesoría en Tesis",
+    description: "Orientación personalizada para tesis (pregrado, maestría, doctorado), del tema a la sustentación.",
+    icon: GraduationCap,
+    iconColor: "text-primary",
+    link: "/services#thesis-advisory",
   },
   {
-    title: "Explorar Cursos",
-    description: "Formación reciente y relevante, siempre al día con las últimas tendencias y conocimientos en tecnología y software.",
-    icon: Send,
-    iconColor: "text-orange-500",
-    link: "/courses",
+    title: "Desarrollo de Software",
+    description: "Soluciones tecnológicas a medida para tus necesidades académicas, de investigación o institucionales.",
+    icon: Code,
+    iconColor: "text-primary",
+    link: "/services#software-development",
   },
   {
-    title: "Plataforma Usuario",
-    description: "Accede a tu cuenta personalizada, gestiona tus cursos, servicios y progreso.",
-    icon: LogIn,
-    iconColor: "text-green-600",
-    link: "/auth/signin", 
+    title: "Publicación Científica",
+    description: "Apoyo integral en la redacción, edición y selección de revistas indexadas (Scielo, Scopus).",
+    icon: CheckSquare,
+    iconColor: "text-primary",
+    link: "/services#scientific-publishing", 
   },
 ];
 
@@ -52,12 +52,12 @@ export default function HomePage() {
                 <Card 
                   className={cn(
                     "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
-                    "bg-card group-hover:border-2 group-hover:border-primary" // Always use bg-card and add hover border
+                    "bg-card group-hover:border-2 group-hover:border-primary"
                   )}
                 >
                   <div className={cn(
                     "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
-                    "bg-muted border" // Always use bg-muted for icon container
+                    "bg-muted border"
                   )}>
                     <service.icon className={cn("h-12 w-12", service.iconColor)} />
                   </div>
@@ -70,6 +70,11 @@ export default function HomePage() {
                 </Card>
               </Link>
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform hover:scale-105">
+              <Link href="/services">Ver todos los servicios <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            </Button>
           </div>
         </div>
       </section>
