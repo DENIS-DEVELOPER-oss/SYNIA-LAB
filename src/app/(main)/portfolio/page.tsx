@@ -412,7 +412,7 @@ export default function PortfolioPage() {
       />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <Tabs defaultValue="software" className="w-full">
-          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-8 border-0">
             <TabsTrigger value="software" className="flex items-center gap-2"><Briefcase className="h-4 w-4"/>Proyectos de Software</TabsTrigger>
             <TabsTrigger value="bookChapters" className="flex items-center gap-2"><BookCopy className="h-4 w-4"/>Capítulos de Libro</TabsTrigger>
             <TabsTrigger value="scientificArticles" className="flex items-center gap-2"><FileText className="h-4 w-4"/>Artículos Científicos</TabsTrigger>
