@@ -51,10 +51,14 @@ export default function BlogPage() {
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-col sm:flex-row gap-4 items-center">
           <div className="relative flex-grow w-full sm:w-auto">
-            <Input type="search" placeholder="Buscar artículos..." className="pl-10" />
+            <Input 
+              type="search" 
+              placeholder="Buscar artículos..." 
+              className="pl-10 focus:ring-2 focus:ring-primary transition-all duration-300" 
+            />
             <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
           </div>
-          <Button variant="outline">
+          <Button variant="outline" className="hover:bg-accent/10 hover:border-primary transition-colors duration-300">
             <Filter className="mr-2 h-4 w-4" />
             Filtrar por Categoría
           </Button>
@@ -68,7 +72,7 @@ export default function BlogPage() {
               description={post.description}
               imageUrl={post.imageUrl}
               imageHint={post.imageHint}
-              linkUrl={`/blog/${post.id}`} // Assuming individual blog post pages
+              linkUrl={`/blog/${post.id}`} 
               linkText="Leer artículo completo"
               category={post.category}
               tags={post.tags}
@@ -82,7 +86,7 @@ export default function BlogPage() {
           ))}
         </div>
          <div className="mt-12 text-center">
-            <Button variant="outline">Cargar más artículos</Button>
+            <Button variant="outline" className="hover:bg-accent/10 hover:border-primary transition-colors duration-300">Cargar más artículos</Button>
         </div>
       </div>
     </>

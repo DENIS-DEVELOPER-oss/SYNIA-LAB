@@ -167,7 +167,10 @@ export default async function IndividualCoursePage({ params }: { params: { id: s
                   <Users className="h-5 w-5 mr-3 text-primary" />
                   <span className="font-semibold mr-2">Nivel:</span> {course.level}
                 </div>
-                <Button size="lg" className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Button 
+                  size="lg" 
+                  className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground transition-transform hover:scale-105"
+                >
                   Inscribirse Ahora
                 </Button>
                 <p className="text-xs text-center text-muted-foreground mt-2">

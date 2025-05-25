@@ -129,10 +129,10 @@ export function ProductionCard({ production }: ProductionCardProps) {
         <CardDescription className="text-sm line-clamp-3">{production.summary}</CardDescription>
       </CardContent>
       <CardFooter className={cn(
-        "flex items-center gap-x-4 gap-y-2 p-4", // Base styles for padding and gap
+        "flex items-center gap-x-4 gap-y-2 p-4", 
         isSoftware 
-          ? "flex-wrap justify-center sm:justify-between" // Software: wrap, center on small, between on sm+
-          : "flex-wrap justify-start" // Publications: wrap, start alignment
+          ? "flex-wrap justify-center sm:justify-between" 
+          : "flex-wrap justify-start" 
       )}>
         {isSoftware && (
           <>
@@ -150,10 +150,10 @@ export function ProductionCard({ production }: ProductionCardProps) {
           </>
         )}
         {isPublication && (
-          <div className="flex flex-wrap gap-2 w-full sm:flex-nowrap sm:w-auto"> {/*Ensure buttons can wrap on very small screens but prefer inline on sm+ */}
+          <div className="flex flex-wrap gap-2 w-full sm:flex-nowrap sm:w-auto">
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="secondary" size="sm" className="flex-grow sm:flex-grow-0"> {/* Allow button to grow if it's the only one or on small screen */}
+                <Button variant="secondary" size="sm" className="flex-grow sm:flex-grow-0 hover:bg-secondary/80 transition-colors"> 
                   <Info className="mr-1.5 h-4 w-4" /> Ver detalles
                 </Button>
               </DialogTrigger>

@@ -19,7 +19,7 @@ export default function AboutPage() {
       />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-16">
         <section>
-          <Card className="shadow-lg">
+          <Card className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2"><Target className="text-primary"/> Misión</CardTitle>
             </CardHeader>
@@ -32,7 +32,7 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <Card className="shadow-lg">
+          <Card className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2"><Eye className="text-primary"/> Visión</CardTitle>
             </CardHeader>
@@ -45,7 +45,7 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <Card className="shadow-lg">
+          <Card className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2"><BookOpen className="text-primary"/> Nuestra Historia</CardTitle>
             </CardHeader>

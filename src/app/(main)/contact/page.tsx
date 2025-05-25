@@ -28,19 +28,18 @@ export default function ContactPage() {
   const { toast } = useToast();
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
-    mode: "onChange", // To show errors as user types or on blur
+    mode: "onChange", 
   });
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     console.log("Contact form data:", data);
     toast({
       title: "Mensaje Enviado con Éxito",
       description: "Gracias por contactarnos. Nos pondremos en contacto contigo pronto.",
-      variant: "default", // Or a custom success variant if you have one
+      variant: "default", 
     });
-    reset(); // Reset form after submission
+    reset(); 
   };
 
   return (
@@ -51,7 +50,6 @@ export default function ContactPage() {
       />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {/* Columna Izquierda: Formulario de Contacto */}
           <Card className="md:col-span-2 shadow-lg">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2"><Send className="h-6 w-6 text-primary"/> Envíanos un Mensaje</CardTitle>
@@ -112,14 +110,17 @@ export default function ContactPage() {
                   </div>
                   {errors.message && <p className="mt-1 text-sm text-destructive">{errors.message.message}</p>}
                 </div>
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary/90 text-lg py-3">
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting} 
+                  className="w-full bg-primary hover:bg-primary/90 text-lg py-3 transition-transform hover:scale-105"
+                >
                   {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                 </Button>
               </form>
             </CardContent>
           </Card>
 
-          {/* Columna Derecha: Información, Redes, Contacto Directo */}
           <div className="space-y-8 md:col-span-1">
             <Card className="shadow-lg">
               <CardHeader>
@@ -195,5 +196,3 @@ export default function ContactPage() {
     </>
   );
 }
-
-    
