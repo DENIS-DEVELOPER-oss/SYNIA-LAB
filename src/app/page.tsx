@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Settings, BookOpen, UserCircle, GraduationCap, Code, FileText, ArrowRight } from "lucide-react"; 
+import { /* Settings, BookOpen, UserCircle, */ GraduationCap, Code, FileText, ArrowRight } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles";
@@ -13,22 +13,19 @@ const generalLinks = [
   {
     title: "Nuestros Servicios",
     description: "Descubre cómo podemos impulsar tus proyectos académicos y tecnológicos.",
-    icon: Settings,
-    iconColor: "text-primary",
+    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/settings/9449/9449016.gif", // Ejemplo: Reemplazar con GIF deseado
     link: "/services",
   },
   {
     title: "Explorar Cursos",
     description: "Capacítate con nuestros programas especializados y actualizados.",
-    icon: BookOpen,
-    iconColor: "text-primary",
+    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/book/13980/13980341.gif", // Ejemplo: Reemplazar con GIF deseado
     link: "/courses",
   },
   {
     title: "Plataforma Usuario",
     description: "Accede a tu panel personalizado y gestiona tus recursos y proyectos.",
-    icon: UserCircle,
-    iconColor: "text-primary",
+    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/avatar/13774/13774088.gif", // Ejemplo: Reemplazar con GIF deseado
     link: "/auth/signin",
   },
 ];
@@ -78,7 +75,8 @@ export default function HomePage() {
                     "mb-6 flex h-20 w-20 items-center justify-center rounded-full",
                      "bg-muted border"
                   )}>
-                    <service.icon className={cn("h-10 w-10", service.iconColor)} />
+                    {/* Cambio para usar img con la URL del GIF */}
+                    <img src={service.iconUrl} alt={`${service.title} icon`} className="h-12 w-12" />
                   </div>
                   <CardTitle className={cn("text-xl mb-3", "text-card-foreground")}> 
                     {service.title}
