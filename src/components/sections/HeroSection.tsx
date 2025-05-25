@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -42,11 +41,11 @@ export function HeroSection() {
   useEffect(() => {
     const slideInterval = setInterval(goToNext, AUTO_SLIDE_INTERVAL);
     return () => clearInterval(slideInterval);
-  }, [currentIndex]);
+  }, [currentIndex]); // Re-run effect if currentIndex changes due to manual navigation
 
   return (
     <>
-      <section className="bg-primary text-primary-foreground py-16 md:py-24">
+      <section className="bg-[#3B82F6] text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Columna Izquierda: Texto y Botones */}
@@ -57,7 +56,7 @@ export function HeroSection() {
               <p className="mt-6 max-w-md mx-auto md:mx-0 text-lg font-light text-primary-foreground/90 sm:text-xl md:mt-8 md:max-w-3xl">
                 {SITE_SLOGAN}
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center md:justify-start gap-4">
                 <Button
                   asChild
                   size="lg"
