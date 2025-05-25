@@ -4,32 +4,32 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, Send, GraduationCap } from "lucide-react";
+import { Users, Send, LogIn, GraduationCap } from "lucide-react"; // Added LogIn
 import { cn } from "@/lib/utils";
 
 const featuredServices = [
   {
-    title: "Plataforma intuitiva",
+    title: "Nuestros Servicios",
     description: "Experiencia de usuario fluida y accesible, con un diseño sencillo que facilita la navegación y el uso de todas sus funciones.",
-    icon: Users,
+    icon: Users, // Kept Users icon
     iconColor: "text-purple-600",
-    link: "/services#plataforma-intuitiva",
+    link: "/services", // Changed link
     highlighted: false,
   },
   {
-    title: "Cursos Actualizados",
+    title: "Explorar Cursos", // Changed title to match button
     description: "Formación reciente y relevante, siempre al día con las últimas tendencias y conocimientos en tecnología y software.",
-    icon: Send,
+    icon: Send, // Kept Send icon
     iconColor: "text-orange-500",
     link: "/courses",
     highlighted: true,
   },
   {
-    title: "Mentores Calificados",
-    description: "Profesionales experimentados en su campo que proporcionan orientación experta y apoyo personalizado para asegurar tu éxito en el aprendizaje.",
-    icon: GraduationCap,
-    iconColor: "text-blue-500",
-    link: "/about#equipo",
+    title: "Plataforma Usuario", // Changed title
+    description: "Accede a tu cuenta personalizada, gestiona tus cursos, servicios y progreso.", // Changed description
+    icon: LogIn, // Changed icon to LogIn
+    iconColor: "text-green-600", // Changed icon color
+    link: "/auth/signin", // Changed link
     highlighted: false,
   },
 ];
@@ -60,7 +60,7 @@ export default function HomePage() {
                     "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
                     service.highlighted ? "bg-primary-foreground" : "bg-muted border"
                   )}>
-                    <service.icon className={cn("h-12 w-12", service.highlighted ? service.iconColor : service.iconColor)} />
+                    <service.icon className={cn("h-12 w-12", service.iconColor)} />
                   </div>
                   <CardTitle className={cn("text-2xl mb-3", service.highlighted ? "text-primary-foreground" : "text-card-foreground")}>
                     {service.title}
