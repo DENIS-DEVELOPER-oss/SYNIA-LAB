@@ -6,8 +6,6 @@ import { Briefcase, BookOpen } from "lucide-react";
 
 const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY"; // Placeholder video
 
-const softwareImagePlaceholder: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Software placeholder", hint: "software interface" };
-
 const softwareItems: ProductionItem[] = [
   { 
     id: "sw1", 
@@ -17,7 +15,7 @@ const softwareItems: ProductionItem[] = [
     category: "Software", 
     thematicArea: "Tecnología Educativa", 
     demoUrl: "/portfolio/software/sw1", 
-    demoLinkText: "Ver detalles del proyecto" 
+    demoLinkText: "Explorar App" 
   },
   { 
     id: "sw2", 
@@ -37,7 +35,7 @@ const softwareItems: ProductionItem[] = [
     category: "Software", 
     thematicArea: "Educación Digital", 
     demoUrl: "/portfolio/software/sw3",
-    demoLinkText: "Acceder Plataforma" 
+    demoLinkText: "Explorar App" 
   },
 ];
 
@@ -163,4 +161,5 @@ export default function PortfolioPage() {
 }
 // TODO: Create dynamic routes for individual portfolio items if needed (e.g., /portfolio/software/[id]).
 // The demoUrl fields currently point to generic paths.
+
 
