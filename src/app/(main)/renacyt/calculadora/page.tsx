@@ -37,10 +37,15 @@ export default function RenacytCalculatorPage() {
     },
   ];
 
-  const bonificacionesEjemplo = [
-    { criterio: "Publicación en revista de alto impacto (Top 10%)", bonificacion: "+5 puntos", nota: "Adicional al puntaje Q1" },
-    { criterio: "Patente internacional concedida", bonificacion: "+10 puntos", nota: "Adicional al puntaje de patente" },
-    { criterio: "Participación en proyectos con financiamiento externo competitivo", bonificacion: "+3 puntos por proyecto", nota: "Máximo 2 proyectos" },
+  const tabla3Items = [
+    { nivel: "Investigador Distinguido", puntaje: "200 a más" },
+    { nivel: "Nivel I", puntaje: "160 - 199" },
+    { nivel: "Nivel II", puntaje: "100 - 159" },
+    { nivel: "Nivel III", puntaje: "70 - 99" },
+    { nivel: "Nivel IV", puntaje: "50 - 69" },
+    { nivel: "Nivel V", puntaje: "35 - 49" },
+    { nivel: "Nivel VI", puntaje: "25 - 34" },
+    { nivel: "Nivel VII", puntaje: "10 - 24" },
   ];
 
   const totalItemsTabla2 = tabla2Items.reduce((sum, current) => sum + current.items.length, 0);
@@ -248,33 +253,27 @@ export default function RenacytCalculatorPage() {
 
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl">Tabla 3: Bonificaciones y Consideraciones Especiales (Ejemplo)</CardTitle>
-            <p className="text-sm text-muted-foreground">Ejemplos de posibles bonificaciones adicionales al puntaje base.</p>
+            <CardTitle className="text-2xl">Tabla 3: Niveles y Puntaje para la Calificación y Clasificación en el RENACYT</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto rounded-lg border">
               <Table>
                 <TableHeader className="bg-muted/50">
                   <TableRow>
-                    <TableHead className="w-2/5 font-semibold">Criterio de Bonificación</TableHead>
-                    <TableHead className="w-1/5 text-center font-semibold">Bonificación Sugerida</TableHead>
-                    <TableHead className="w-2/5 font-semibold">Nota / Condición</TableHead>
+                    <TableHead className="w-1/2 font-semibold">Niveles de Clasificación</TableHead>
+                    <TableHead className="w-1/2 text-center font-semibold">Puntaje requerido por Nivel de Clasificación</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {bonificacionesEjemplo.map((item, index) => (
+                  {tabla3Items.map((item, index) => (
                     <TableRow key={index}>
-                      <TableCell className="font-medium">{item.criterio}</TableCell>
-                      <TableCell className="text-center">{item.bonificacion}</TableCell>
-                      <TableCell>{item.nota}</TableCell>
+                      <TableCell className="font-medium">{item.nivel}</TableCell>
+                      <TableCell className="text-center">{item.puntaje}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             </div>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Importante: Las bonificaciones reales y sus valores son definidos por CONCYTEC en sus convocatorias y reglamentos. Esta tabla es solo ilustrativa.
-            </p>
           </CardContent>
         </Card>
 
@@ -282,3 +281,4 @@ export default function RenacytCalculatorPage() {
     </>
   );
 }
+
