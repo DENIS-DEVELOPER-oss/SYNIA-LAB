@@ -58,9 +58,8 @@ export function Navbar() {
           <Logo />
         </div>
 
-        {/* Middle: Desktop Nav Links (desktop only) */}
-        {/* Uses absolute positioning for centeringdesktop nav links, common pattern for flex justify-between parents */}
-        <nav className="hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-1 md:flex">
+        {/* Middle: Desktop Nav Links */}
+        <nav className="hidden md:flex items-center space-x-1">
           {NAV_LINKS.map((link) => (
             <Button
               key={link.href}
@@ -69,8 +68,8 @@ export function Navbar() {
               className={cn(
                 "text-sm font-medium",
                 pathname === link.href
-                  ? "text-primary font-semibold bg-accent/10"
-                  : "text-muted-foreground hover:text-primary hover:bg-accent/10"
+                  ? "bg-accent text-accent-foreground hover:bg-accent/90 font-semibold"
+                  : "text-foreground hover:text-primary hover:bg-accent/10"
               )}
             >
               <Link href={link.href}>{link.label}</Link>
@@ -136,7 +135,7 @@ export function Navbar() {
                 className={cn(
                   "justify-start",
                   pathname === link.href 
-                  ? "text-primary bg-accent/10 hover:bg-accent/20" 
+                  ? "bg-accent text-accent-foreground hover:bg-accent/90" 
                   : "text-foreground hover:bg-accent/10 hover:text-primary"
                 )}
               >
