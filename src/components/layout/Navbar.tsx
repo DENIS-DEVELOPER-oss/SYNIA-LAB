@@ -112,7 +112,7 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : !loading ? (
-            <Button asChild variant="ghost" size="sm" className="text-foreground hover:bg-accent/10 hover:text-primary">
+            <Button asChild variant="ghost" size="sm" className="text-primary hover:bg-accent/10">
               <Link href="/auth/signin">
                 <LogIn className="mr-2 h-4 w-4" />
                 Iniciar Sesión
@@ -151,7 +151,7 @@ export function Navbar() {
                  <Button
                     variant="ghost"
                     asChild
-                    className="justify-start text-foreground hover:bg-accent/10 hover:text-primary"
+                    className="justify-start text-primary hover:bg-accent/10"
                   >
                     <Link href="/auth/signin">
                       <LogIn className="mr-2 h-4 w-4" />
