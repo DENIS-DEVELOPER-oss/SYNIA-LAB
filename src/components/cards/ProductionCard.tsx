@@ -10,7 +10,7 @@ import { Tag } from "lucide-react"; // Using Tag for thematic area
 export interface ProductionItem {
   id: string;
   title: string;
-  category: 'Software' | 'Capítulo de Libro' | 'Artículo Científico';
+  category: 'Software' | 'Capítulo de Libro' | 'Artículo Científico' | 'Tesis Doctoral' | 'Tesis de Maestría' | 'Libro';
   thematicArea: string;
   summary: string;
   videoUrl: string; // YouTube embed URL
