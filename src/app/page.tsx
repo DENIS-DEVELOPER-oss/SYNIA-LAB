@@ -1,36 +1,36 @@
 
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card"; // Removed CardHeader, CardContent
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
-import { Code, BookOpen, GraduationCap } from "lucide-react"; // Added more icons
+import { Users, Send, GraduationCap } from "lucide-react"; // Updated icons
+import { cn } from "@/lib/utils";
 
 const featuredServices = [
   {
-    title: "Desarrollo de Software",
-    description: "Soluciones a medida para optimizar tus procesos y alcanzar tus metas.",
-    icon: <Code className="h-10 w-10 text-primary mb-4" />, // Updated icon
-    link: "/services#software-development",
-    image: "https://placehold.co/600x400.png",
-    imageHint: "software code screen" // Updated hint
+    title: "Plataforma intuitiva",
+    description: "Experiencia de usuario fluida y accesible, con un diseño sencillo que facilita la navegación y el uso de todas sus funciones.",
+    icon: Users,
+    iconColor: "text-purple-600",
+    link: "/services#plataforma-intuitiva", // Updated link for consistency
+    highlighted: false,
   },
   {
-    title: "Producción Académica",
-    description: "Transformamos tu investigación en publicaciones de alto impacto.",
-    icon: <BookOpen className="h-10 w-10 text-primary mb-4" />, // Updated icon
-    link: "/services#academic-production",
-    image: "https://placehold.co/600x400.png",
-    imageHint: "research publication" // Updated hint
+    title: "Cursos Actualizados",
+    description: "Formación reciente y relevante, siempre al día con las últimas tendencias y conocimientos en tecnología y software.",
+    icon: Send,
+    iconColor: "text-orange-500", // Icon color on the highlighted card
+    link: "/courses",
+    highlighted: true,
   },
   {
-    title: "Asesoría de Tesis",
-    description: "Te guiamos paso a paso hacia la culminación exitosa de tu tesis.",
-    icon: <GraduationCap className="h-10 w-10 text-primary mb-4" />, // Updated icon
-    link: "/services#thesis-advisory",
-    image: "https://placehold.co/600x400.png",
-    imageHint: "thesis student" // Updated hint
+    title: "Mentores Calificados",
+    description: "Profesionales experimentados en su campo que proporcionan orientación experta y apoyo personalizado para asegurar tu éxito en el aprendizaje.",
+    icon: GraduationCap,
+    iconColor: "text-blue-500",
+    link: "/about#equipo", // Updated link for consistency
+    highlighted: false,
   },
 ];
 
@@ -49,28 +49,26 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service) => (
-              <Card key={service.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
-                <div className="relative h-48 w-full overflow-hidden"> {/* Added overflow-hidden here */}
-                    <Image 
-                        src={service.image} 
-                        alt={service.title} 
-                        layout="fill" 
-                        objectFit="cover"
-                        data-ai-hint={service.imageHint}
-                    />
+              <Card 
+                key={service.title} 
+                className={cn(
+                  "flex flex-col items-center text-center p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group h-full",
+                  service.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
+                )}
+              >
+                <div className={cn(
+                  "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
+                  service.highlighted ? "bg-primary-foreground" : "bg-muted border"
+                )}>
+                  <service.icon className={cn("h-12 w-12", service.highlighted ? service.iconColor : service.iconColor)} />
                 </div>
-                <CardHeader className="text-center">
-                  {service.icon}
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <CardDescription className="text-center text-base">{service.description}</CardDescription>
-                </CardContent>
-                <div className="p-6 pt-0 text-center">
-                  <Button asChild variant="link" className="text-primary hover:underline font-semibold">
-                    <Link href={service.link}>Saber más</Link>
-                  </Button>
-                </div>
+                <CardTitle className={cn("text-2xl mb-3", service.highlighted ? "text-primary-foreground" : "text-card-foreground")}>
+                  {service.title}
+                </CardTitle>
+                <CardDescription className={cn("text-base flex-grow", service.highlighted ? "text-primary-foreground/90" : "text-muted-foreground")}>
+                  {service.description}
+                </CardDescription>
+                {/* "Saber más" button removed as per new design */}
               </Card>
             ))}
           </div>
