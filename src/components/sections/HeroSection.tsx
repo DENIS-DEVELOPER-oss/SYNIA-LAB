@@ -42,7 +42,7 @@ export function HeroSection() {
   useEffect(() => {
     const slideInterval = setInterval(goToNext, AUTO_SLIDE_INTERVAL);
     return () => clearInterval(slideInterval);
-  }, [currentIndex]); // Asegúrate de que el efecto se limpie y se reinicie si currentIndex cambia
+  }, [currentIndex]);
 
   return (
     <>
@@ -57,7 +57,7 @@ export function HeroSection() {
               <p className="mt-6 max-w-md mx-auto md:mx-0 text-lg font-light text-primary-foreground/90 sm:text-xl md:mt-8 md:max-w-3xl">
                 {SITE_SLOGAN}
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center md:justify-start gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-4">
                 <Button
                   asChild
                   size="lg"
