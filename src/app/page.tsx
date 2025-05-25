@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GraduationCap, Code, CheckSquare, ArrowRight, Settings, BookOpen, UserCircle, FileText } from "lucide-react"; 
+import { Settings, BookOpen, UserCircle, GraduationCap, Code, FileText, ArrowRight } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles";
@@ -51,7 +51,7 @@ const mainServices = [
   {
     title: "Publicación Científica",
     description: "Apoyo integral en la redacción, edición y selección de revistas indexadas (Scielo, Scopus).",
-    icon: FileText, // Changed from CheckSquare for better distinction
+    icon: FileText, 
     iconColor: "text-primary",
     link: "/services#scientific-publishing", 
   },
@@ -66,17 +66,17 @@ export default function HomePage() {
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {generalLinks.map((service) => (
+            {generalLinks.map((service, index) => (
               <Link key={service.title} href={service.link} className="block h-full group">
                 <Card 
                   className={cn(
                     "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
-                    "bg-card" // Removed hover border effect for these cards
+                    "bg-card group-hover:border-2 group-hover:border-primary"
                   )}
                 >
                   <div className={cn(
                     "mb-6 flex h-20 w-20 items-center justify-center rounded-full",
-                    "bg-muted border"
+                     "bg-muted border"
                   )}>
                     <service.icon className={cn("h-10 w-10", service.iconColor)} />
                   </div>
@@ -102,7 +102,7 @@ export default function HomePage() {
                 <Card 
                   className={cn(
                     "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
-                    "bg-card group-hover:border-2 group-hover:border-primary" // Added hover border effect for these cards
+                    "bg-card group-hover:border-2 group-hover:border-primary"
                   )}
                 >
                   <div className={cn(
