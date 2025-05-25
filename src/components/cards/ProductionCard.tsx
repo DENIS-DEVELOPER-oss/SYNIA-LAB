@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export interface ProductionImage {
   src: string;
@@ -22,8 +23,8 @@ export interface ProductionItem {
   summary: string;
   videoUrl?: string;
   imageUrls?: ProductionImage[];
-  demoUrl: string; // Maintained for software, can be '#' or similar for publications if no direct external link
-  demoLinkText: string; // Will be overridden for publications by "Participar"
+  demoUrl: string;
+  demoLinkText: string;
 }
 
 interface ProductionCardProps {
@@ -120,21 +121,31 @@ export function ProductionCard({ production }: ProductionCardProps) {
       <CardContent className="flex-grow">
         <CardDescription className="text-sm line-clamp-3">{production.summary}</CardDescription>
       </CardContent>
-      <CardFooter>
-        {isSoftware ? (
-          <Button asChild variant="link" className="p-0 text-primary hover:underline">
-            <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
-              {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
-            </Link>
-          </Button>
-        ) : isPublication ? (
+      <CardFooter className={cn("flex gap-2", isSoftware ? "justify-between" : "justify-start")}>
+        {isSoftware && (
+          <>
+            <Button asChild variant="link" className="p-0 text-primary hover:underline">
+              <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
+                {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="sm" className="text-accent border-accent hover:bg-accent/10">
+              <Link href="/auth/signin">
+                <UserPlus className="mr-1.5 h-4 w-4" />
+                Participar
+              </Link>
+            </Button>
+          </>
+        )}
+        {isPublication && (
           <Button asChild variant="outline" className="text-accent border-accent hover:bg-accent/10">
             <Link href="/auth/signin">
               <UserPlus className="mr-2 h-4 w-4" />
               Participar
             </Link>
           </Button>
-        ) : (
+        )}
+        {!isSoftware && !isPublication && (
            // Fallback or default button if category doesn't match software or publication
           <Button asChild variant="link" className="p-0 text-primary hover:underline">
             <Link href={production.demoUrl}>
