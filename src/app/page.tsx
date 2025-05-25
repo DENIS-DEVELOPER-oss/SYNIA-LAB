@@ -158,8 +158,7 @@ export default function HomePage() {
               </CardContent>
               <CardFooter className="pt-4 pb-6 justify-center">
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform hover:scale-105">
-                  {/* TODO: Update link to actual postulation page */}
-                  <Link href="/renacyt/postulacion">
+                  <Link href="https://wa.me/51954526232" target="_blank" rel="noopener noreferrer">
                     Iniciar Postulación <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -205,5 +204,3 @@ export default function HomePage() {
     </MainLayout>
   );
 }
-
-    
