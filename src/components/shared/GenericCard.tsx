@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface GenericCardProps {
   title: string;
@@ -31,16 +32,19 @@ export function GenericCard({
   footerContent,
 }: GenericCardProps) {
   return (
-    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+    <Card className={cn(
+      "flex flex-col overflow-hidden shadow-lg h-full group",
+      "hover:shadow-xl hover:scale-105 transition-all duration-300"
+    )}>
       {imageUrl && (
-        <div className="relative h-48 w-full">
+        <div className="relative h-48 w-full overflow-hidden"> {/* Added overflow-hidden here */}
           <Image 
             src={imageUrl} 
             alt={title} 
             layout="fill" 
             objectFit="cover" 
             data-ai-hint={imageHint}
-            className="transition-transform duration-300 group-hover:scale-105"
+            className="transition-transform duration-300 group-hover:scale-110" // Slightly larger scale for image
           />
         </div>
       )}
@@ -63,13 +67,14 @@ export function GenericCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="flex justify-between items-center">
-        {linkUrl && (
+      <CardFooter className="flex justify-between items-center pt-0"> {/* Ensure footer content is primary driver */}
+        {footerContent ? (
+            <div className="w-full">{footerContent}</div>
+        ) : linkUrl ? (
           <Button asChild variant="link" className="p-0 text-primary hover:underline">
             <Link href={linkUrl}>{linkText}</Link>
           </Button>
-        )}
-        {footerContent}
+        ) : null}
       </CardFooter>
     </Card>
   );

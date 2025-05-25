@@ -3,41 +3,68 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { GenericCard } from "@/components/shared/GenericCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { DollarSign, Clock, Users } from "lucide-react";
+import { Clock } from "lucide-react";
 
 const courses = [
   {
-    id: "nextjs-pro",
-    title: "Next.js para Profesionales",
-    description: "Domina Next.js y crea aplicaciones web modernas, rápidas y escalables. Desde los fundamentos hasta despliegues en producción.",
-    price: "S/ 499",
-    duration: "40 horas",
-    students: 120,
+    id: "mendeley",
+    title: "Curso de Mendeley",
+    description: "El curso de Mendeley es esencial para investigadores y estudiantes, ya que enseña a organizar, compartir y citar referencias bibliográficas de manera eficiente.",
+    price: "$ 45.00",
+    duration: "4 horas", // From 04:00:00
     imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "coding screen",
-    category: "Desarrollo Web",
-  },
-  {
-    id: "academic-writing",
-    title: "Redacción Científica de Alto Impacto",
-    description: "Aprende las técnicas y estrategias para escribir artículos científicos que logren publicación en revistas de prestigio.",
-    price: "S/ 350",
-    duration: "24 horas",
-    students: 85,
-    imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "writing research",
+    imageHint: "laptop mendeley",
     category: "Investigación",
   },
   {
-    id: "thesis-masterclass",
-    title: "Masterclass: Tu Tesis Exitosa",
-    description: "Un curso intensivo que te guiará paso a paso en la elaboración de tu tesis, desde la idea inicial hasta la sustentación.",
-    price: "S/ 599",
-    duration: "30 horas",
-    students: 95,
+    id: "jasp-statistics",
+    title: "Análisis estadístico con JASP",
+    description: "En el mundo de la investigación científica, el análisis estadístico es la clave para validar hipótesis y obtener conclusiones significativas.",
+    price: "$ 45.00",
+    duration: "4 horas", // From 04:02:00
     imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "student study",
-    category: "Académico",
+    imageHint: "JASP statistics software",
+    category: "Estadística",
+  },
+  {
+    id: "tesis-diseno-correlacional",
+    title: "Tesis de diseño correlacional",
+    description: "Descubre cómo analizar la relación entre variables y fortalecer tu investigación con un enfoque estadístico sólido y aplicado.",
+    price: "$ 90.00",
+    duration: "10h 30m", // From 10:32:00
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "research presentation man",
+    category: "Tesis",
+  },
+  {
+    id: "atlas-ti-cualitativa",
+    title: "Atlas.ti elemental para la investigación cualitativa",
+    description: "En un mundo donde el análisis de datos cualitativos es clave para la investigación y la toma de decisiones, dominar Atlas.ti es fundamental.",
+    price: "$ 55.00",
+    duration: "4 horas", // From 04:02:00
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "data analysis interface",
+    category: "Investigación Cualitativa",
+  },
+  {
+    id: "normas-apa-7ma",
+    title: "Normas Apa 7ma Edición",
+    description: "Este curso taller tiene como objetivo brindar herramientas necesarias para aplicar correctamente las Normas APA 7ma edición en trabajos académicos.",
+    price: "$ 45.00",
+    duration: "8 horas", // From 08:00:00
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "APA style guide book",
+    category: "Redacción Académica",
+  },
+  {
+    id: "excel-docencia-investigacion",
+    title: "Excel Orientado a la Docencia Universitaria e Investigación Científica",
+    description: "Este curso está diseñado para enseñar el uso de Excel, proporcionando herramientas prácticas para docentes e investigadores.",
+    price: "$ 45.00",
+    duration: "8 horas", // From 08:00:00
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "excel spreadsheet teaching",
+    category: "Herramientas",
   },
 ];
 
@@ -45,8 +72,8 @@ export default function CoursesPage() {
   return (
     <>
       <PageHeader
-        title="Nuestros Cursos"
-        subtitle="Capacítate con expertos y adquiere las habilidades que necesitas para destacar."
+        title="Cursos Online"
+        subtitle="Accede a una experiencia educativa flexible, adaptada a tus necesidades, donde y cuando lo necesites, impulsando tu desarrollo profesional."
       />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -59,11 +86,12 @@ export default function CoursesPage() {
               imageHint={course.imageHint}
               category={course.category}
               footerContent={
-                <div className="w-full">
-                    <div className="flex justify-between items-center text-sm text-muted-foreground mb-2">
-                        <span className="flex items-center"><DollarSign className="h-4 w-4 mr-1 text-green-500"/> {course.price}</span>
-                        <span className="flex items-center"><Clock className="h-4 w-4 mr-1"/> {course.duration}</span>
-                        <span className="flex items-center"><Users className="h-4 w-4 mr-1"/> {course.students}</span>
+                <div className="w-full pt-2">
+                    <div className="flex justify-between items-center text-sm text-muted-foreground mb-3">
+                        <span className="flex items-center">
+                            <Clock className="h-4 w-4 mr-1.5 text-primary" /> {course.duration}
+                        </span>
+                        <span className="font-semibold text-lg text-foreground">{course.price}</span>
                     </div>
                     <Button asChild className="w-full bg-primary hover:bg-primary/90">
                         <Link href={`/courses/${course.id}`}>Ver Detalles e Inscribirse</Link>

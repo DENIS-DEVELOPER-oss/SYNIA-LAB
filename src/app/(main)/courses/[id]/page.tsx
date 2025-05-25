@@ -6,15 +6,89 @@ import { CheckCircle, Clock, DollarSign, Users, Info, ListChecks, Award } from "
 import Image from "next/image";
 import Link from "next/link";
 
-// Mock data fetching function - replace with actual data fetching
+const courseDetailsData = [
+  { 
+    id: "mendeley", 
+    title: "Curso de Mendeley", 
+    description: "El curso de Mendeley es esencial para investigadores y estudiantes, ya que enseña a organizar, compartir y citar referencias bibliográficas de manera eficiente.", 
+    instructor: "Equipo SYNIA LAB", 
+    price: "$ 45.00", 
+    duration: "4 horas", 
+    level: "Todos los niveles", 
+    image: "https://placehold.co/800x450.png", 
+    imageHint: "laptop mendeley", 
+    syllabus: ["Introducción a Mendeley", "Gestión de referencias", "Integración con procesadores de texto", "Colaboración y grupos", "Buenas prácticas de citación"], 
+    benefits: ["Certificado de finalización", "Material descargable", "Acceso a ejemplos prácticos"] 
+  },
+  { 
+    id: "jasp-statistics", 
+    title: "Análisis estadístico con JASP", 
+    description: "En el mundo de la investigación científica, el análisis estadístico es la clave para validar hipótesis y obtener conclusiones significativas. Este curso te introduce a JASP, una alternativa gratuita y potente a SPSS.", 
+    instructor: "Dr. Alexandro R.", 
+    price: "$ 45.00", 
+    duration: "4 horas", 
+    level: "Principiante/Intermedio", 
+    image: "https://placehold.co/800x450.png", 
+    imageHint: "JASP statistics software", 
+    syllabus: ["Introducción a JASP", "Tipos de datos y variables", "Estadística descriptiva", "Pruebas T y ANOVA", "Correlaciones y regresión básica"], 
+    benefits: ["Certificado de finalización", "Ejercicios prácticos con datasets reales", "Guía de instalación y configuración"] 
+  },
+  { 
+    id: "tesis-diseno-correlacional", 
+    title: "Tesis de diseño correlacional", 
+    description: "Descubre cómo analizar la relación entre variables y fortalecer tu investigación con un enfoque estadístico sólido y aplicado. Ideal para estudiantes desarrollando tesis con este tipo de diseño.", 
+    instructor: "Wilson Sucari", 
+    price: "$ 90.00", 
+    duration: "10h 30m", 
+    level: "Intermedio/Avanzado", 
+    image: "https://placehold.co/800x450.png", 
+    imageHint: "research presentation man", 
+    syllabus: ["Fundamentos del diseño correlacional", "Planteamiento del problema y hipótesis", "Recolección de datos", "Análisis de correlación (Pearson, Spearman)", "Interpretación de resultados y discusión"], 
+    benefits: ["Certificado de finalización", "Plantillas para estructura de tesis", "Sesión de preguntas y respuestas grabada"] 
+  },
+  { 
+    id: "atlas-ti-cualitativa", 
+    title: "Atlas.ti elemental para la investigación cualitativa", 
+    description: "En un mundo donde el análisis de datos cualitativos es clave para la investigación y la toma de decisiones, dominar Atlas.ti es fundamental. Aprende a gestionar, codificar y analizar tus datos cualitativos.", 
+    instructor: "Lic. Mario P.", 
+    price: "$ 55.00", 
+    duration: "4 horas", 
+    level: "Principiante", 
+    image: "https://placehold.co/800x450.png", 
+    imageHint: "data analysis interface", 
+    syllabus: ["Introducción a Atlas.ti", "Creación de proyectos y documentos", "Codificación y memos", "Análisis de redes y consultas", "Generación de reportes"], 
+    benefits: ["Certificado de finalización", "Guía rápida de comandos", "Ejemplos de proyectos analizados"] 
+  },
+  { 
+    id: "normas-apa-7ma", 
+    title: "Normas Apa 7ma Edición", 
+    description: "Este curso taller tiene como objetivo brindar herramientas necesarias para aplicar correctamente las Normas APA 7ma edición en trabajos académicos, artículos y tesis.", 
+    instructor: "Equipo SYNIA LAB", 
+    price: "$ 45.00", 
+    duration: "8 horas", 
+    level: "Todos los niveles", 
+    image: "https://placehold.co/800x450.png", 
+    imageHint: "APA style guide book", 
+    syllabus: ["Principios de la citación APA 7ma", "Formato de citas en el texto", "Elaboración de la lista de referencias", "Formato general del documento", "Tablas y figuras según APA 7ma"], 
+    benefits: ["Certificado de finalización", "Guía de referencia rápida APA 7ma", "Ejemplos de citas para diversos tipos de fuentes"] 
+  },
+  { 
+    id: "excel-docencia-investigacion", 
+    title: "Excel Orientado a la Docencia Universitaria e Investigación Científica", 
+    description: "Este curso está diseñado para enseñar el uso de Excel, proporcionando herramientas prácticas para la gestión de datos, análisis básicos y visualización, aplicables a la docencia e investigación.", 
+    instructor: "Ing. Carla S.", 
+    price: "$ 45.00", 
+    duration: "8 horas", 
+    level: "Principiante/Intermedio", 
+    image: "https://placehold.co/800x450.png", 
+    imageHint: "excel spreadsheet teaching", 
+    syllabus: ["Funciones básicas y avanzadas", "Gestión de bases de datos en Excel", "Tablas dinámicas para análisis", "Creación de gráficos efectivos", "Automatización de tareas sencillas con macros"], 
+    benefits: ["Certificado de finalización", "Plantillas de Excel útiles", "Ejercicios prácticos aplicados"] 
+  },
+];
+
 async function getCourseData(id: string) {
-  // In a real app, fetch this from a DB or CMS
-  const courses = [
-    { id: "nextjs-pro", title: "Next.js para Profesionales", description: "Domina Next.js y crea aplicaciones web modernas, rápidas y escalables. Desde los fundamentos hasta despliegues en producción.", instructor: "Dr. Alexandro R.", price: "S/ 499", duration: "40 horas", level: "Intermedio/Avanzado", image: "https://placehold.co/800x450.png", imageHint: "web development", syllabus: ["Introducción a Next.js", "Routing y Layouts", "Data Fetching", "Server Components", "Autenticación", "Despliegue"], benefits: ["Certificado de finalización", "Acceso a comunidad privada", "Material descargable"] },
-    { id: "academic-writing", title: "Redacción Científica de Alto Impacto", description: "Aprende las técnicas y estrategias para escribir artículos científicos que logren publicación en revistas de prestigio.", instructor: "Lic. Mario P.", price: "S/ 350", duration: "24 horas", level: "Todos los niveles", image: "https://placehold.co/800x450.png", imageHint: "academic writing", syllabus: ["Estructura de un artículo", "Estilo y lenguaje científico", "Manejo de referencias", "Proceso de revisión por pares"], benefits: ["Revisión de un borrador", "Plantillas de artículos", "Ejemplos prácticos"] },
-    { id: "thesis-masterclass", title: "Masterclass: Tu Tesis Exitosa", description: "Un curso intensivo que te guiará paso a paso en la elaboración de tu tesis, desde la idea inicial hasta la sustentación.", instructor: "Equipo SYNIA LAB", price: "S/ 599", duration: "30 horas", level: "Pregrado/Maestría", image: "https://placehold.co/800x450.png", imageHint: "graduation thesis", syllabus: ["Definición del problema", "Marco teórico", "Metodología", "Análisis de resultados", "Redacción y formato", "Preparación para sustentación"], benefits: ["Asesoría personalizada (1 sesión)", "Grupo de estudio", "Guías y checklists"] },
-  ];
-  return courses.find(course => course.id === id) || null;
+  return courseDetailsData.find(course => course.id === id) || null;
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
@@ -108,16 +182,8 @@ export default async function IndividualCoursePage({ params }: { params: { id: s
   );
 }
 
-// This function is needed for Next.js to know which dynamic paths to pre-render if using SSG.
-// For SSR, this might not be strictly necessary, but good practice.
 export async function generateStaticParams() {
-  const courses = [ // This should come from your data source
-    { id: "nextjs-pro" },
-    { id: "academic-writing" },
-    { id: "thesis-masterclass" },
-  ];
- 
-  return courses.map((course) => ({
+  return courseDetailsData.map((course) => ({
     id: course.id,
   }));
 }
