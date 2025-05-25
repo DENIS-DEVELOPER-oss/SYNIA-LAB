@@ -7,11 +7,6 @@ import { Briefcase, BookOpen } from "lucide-react";
 const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY"; // Placeholder video
 
 const softwareImagePlaceholder: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Software placeholder", hint: "software interface" };
-const articleImagePlaceholder1: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Artículo placeholder 1", hint: "chart data" };
-const articleImagePlaceholder2: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Artículo placeholder 2", hint: "document text" };
-const bookImagePlaceholder1: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Libro placeholder 1", hint: "book cover" };
-const bookImagePlaceholder2: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Libro placeholder 2", hint: "text page" };
-
 
 const softwareItems: ProductionItem[] = [
   { 
@@ -21,7 +16,7 @@ const softwareItems: ProductionItem[] = [
     videoUrl: placeholderVideoUrl, 
     category: "Software", 
     thematicArea: "Tecnología Educativa", 
-    demoUrl: "/portfolio/software/sw1", // Placeholder link
+    demoUrl: "/portfolio/software/sw1", 
     demoLinkText: "Ver detalles del proyecto" 
   },
   { 
@@ -31,7 +26,7 @@ const softwareItems: ProductionItem[] = [
     videoUrl: placeholderVideoUrl, 
     category: "Software", 
     thematicArea: "Investigación Aplicada", 
-    demoUrl: "/portfolio/software/sw2", // Placeholder link
+    demoUrl: "/portfolio/software/sw2", 
     demoLinkText: "Explorar App" 
   },
    { 
@@ -50,8 +45,11 @@ const publicationItems: ProductionItem[] = [
   { 
     id: "ar1", 
     title: "Impacto de la IA en la Educación Superior", 
-    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos y las metodologías de enseñanza en el nivel superior. Publicado en Revista Q3 de Innovación Educativa.", 
-    imageUrls: [articleImagePlaceholder1, articleImagePlaceholder2],
+    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos. Publicado en Revista Q3 de Innovación Educativa.", 
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Gráfico de IA en educación", hint: "AI education chart" },
+        { src: "https://placehold.co/600x400.png", alt: "Estudiantes con tecnología", hint: "students technology" }
+    ],
     category: "Artículo Científico", 
     thematicArea: "Inteligencia Artificial", 
     demoUrl: "/portfolio/articles/ar1", 
@@ -59,27 +57,69 @@ const publicationItems: ProductionItem[] = [
   },
   { 
     id: "cl1", 
-    title: "Metodologías Ágiles en el Desarrollo de Software Moderno", 
-    summary: "Capítulo de libro que explora la aplicación práctica de Scrum, Kanban y XP en equipos de desarrollo, enfocado en mejorar la eficiencia y la calidad del producto final.", 
-    imageUrls: [bookImagePlaceholder1, bookImagePlaceholder2],
+    title: "Metodologías Ágiles en el Desarrollo de Software", 
+    summary: "Capítulo de libro que explora la aplicación práctica de Scrum y Kanban en equipos de desarrollo.", 
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Portada libro metodologías ágiles", hint: "agile book cover" },
+        { src: "https://placehold.co/600x400.png", alt: "Diagrama de Scrum", hint: "scrum diagram" }
+    ],
     category: "Capítulo de Libro", 
     thematicArea: "Ingeniería de Software", 
     demoUrl: "/portfolio/articles/cl1", 
     demoLinkText: "Leer resumen" 
   },
-   { 
+  { 
     id: "ar2", 
     title: "Blockchain y la Seguridad de Datos en Salud", 
-    summary: "Investigación sobre el potencial de la tecnología blockchain para asegurar la integridad y privacidad de los registros médicos electrónicos. Publicado en Journal of Medical Internet Research (JMIR).", 
+    summary: "Investigación sobre el potencial de blockchain para asegurar la integridad de registros médicos. Publicado en JMIR.", 
     imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Blockchain network", hint: "blockchain network" },
-        { src: "https://placehold.co/600x400.png", alt: "Secure data", hint: "secure data" }
+        { src: "https://placehold.co/600x400.png", alt: "Red Blockchain", hint: "blockchain network" },
+        { src: "https://placehold.co/600x400.png", alt: "Datos médicos seguros", hint: "secure medical data" }
     ],
     category: "Artículo Científico", 
     thematicArea: "Ciberseguridad en Salud", 
     demoUrl: "/portfolio/articles/ar2",
     demoLinkText: "Leer resumen" 
   },
+  {
+    id: "cl2",
+    title: "Desarrollo Sostenible y Tecnología: Un Enfoque Integrado",
+    category: "Capítulo de Libro",
+    thematicArea: "Sostenibilidad y TIC",
+    summary: "Capítulo que examina el papel crucial de la tecnología en la consecución de los Objetivos de Desarrollo Sostenible (ODS).",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "ODS y tecnología", hint: "SDG technology" },
+        { src: "https://placehold.co/600x400.png", alt: "Tecnología verde", hint: "green tech" }
+    ],
+    demoUrl: "/portfolio/articles/cl2",
+    demoLinkText: "Leer resumen"
+  },
+  {
+    id: "ar3",
+    title: "Análisis de Sentimiento en Redes Sociales para Predicción de Tendencias",
+    category: "Artículo Científico",
+    thematicArea: "Procesamiento de Lenguaje Natural",
+    summary: "Estudio sobre cómo el análisis de sentimiento de datos de redes sociales puede predecir tendencias de mercado. Publicado en Journal of Data Science.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Gráfico de análisis de sentimiento", hint: "sentiment chart" },
+        { src: "https://placehold.co/600x400.png", alt: "Datos de redes sociales", hint: "social data" }
+    ],
+    demoUrl: "/portfolio/articles/ar3",
+    demoLinkText: "Leer resumen"
+  },
+  {
+    id: "ar4",
+    title: "Gamificación en Entornos de Aprendizaje Virtual: Efectividad y Percepción",
+    category: "Artículo Científico",
+    thematicArea: "Tecnología Educativa",
+    summary: "Investigación que evalúa la efectividad de la gamificación en plataformas e-learning. Publicado en Computers & Education.",
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Interfaz e-learning gamificada", hint: "gamified e-learning" },
+        { src: "https://placehold.co/600x400.png", alt: "Estudiantes interactuando online", hint: "students online" }
+    ],
+    demoUrl: "/portfolio/articles/ar4",
+    demoLinkText: "Leer resumen"
+  }
 ];
 
 
@@ -123,3 +163,4 @@ export default function PortfolioPage() {
 }
 // TODO: Create dynamic routes for individual portfolio items if needed (e.g., /portfolio/software/[id]).
 // The demoUrl fields currently point to generic paths.
+
