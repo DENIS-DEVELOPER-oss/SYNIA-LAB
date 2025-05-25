@@ -8,8 +8,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+// Data should ideally be fetched or imported, but for this example,
+// we'll use a subset of the portfolio data, ensuring the first 3 of each category are represented.
+
 const allProductions: ProductionItem[] = [
-  // Software (Tomados del portafolio - los 3 primeros)
+  // Software (Primeros 3 del portafolio)
   {
     id: "sw1_home",
     title: "Sistema de Gestión Académica Avanzado",
@@ -17,30 +20,31 @@ const allProductions: ProductionItem[] = [
     videoUrl: "https://www.youtube.com/embed/BBJa32lCaaY",
     category: "Software",
     thematicArea: "Educación",
-    demoUrl: "/portfolio/software/sw1",
+    demoUrl: "/portfolio/software/sw1", // This would ideally be a real demo link
     demoLinkText: "Explorar App"
   },
   {
     id: "sw2_home",
     title: "App Móvil para Investigación de Campo",
     summary: "Aplicación intuitiva para la recolección y análisis de datos en tiempo real.",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder
     category: "Software",
     thematicArea: "Investigación Aplicada",
     demoUrl: "/portfolio/software/sw2",
     demoLinkText: "Explorar App"
   },
-   {
+  {
     id: "sw3_home",
     title: "Plataforma E-learning Interactiva",
     summary: "Solución completa para cursos online, con seguimiento de progreso y herramientas colaborativas.",
-    videoUrl: "https://www.youtube.com/embed/u_xRemrA9oU",
+    videoUrl: "https://www.youtube.com/embed/u_xRemrA9oU", // Placeholder
     category: "Software",
     thematicArea: "Educación",
     demoUrl: "/portfolio/software/sw3",
     demoLinkText: "Explorar App"
   },
-  // Capítulos de Libro (Tomados del portafolio - los 3 primeros)
+
+  // Capítulos de Libro (Primeros 3 del portafolio)
   {
     id: "cl1_home",
     title: "Metodologías Ágiles en el Desarrollo de Software",
@@ -51,8 +55,8 @@ const allProductions: ProductionItem[] = [
     ],
     category: "Capítulo de Libro",
     thematicArea: "Ingeniería de Software",
-    demoUrl: "/portfolio/articles/cl1", // Corresponds to ProductionItem.id 'cl1' from portfolio
-    demoLinkText: "Leer resumen", // This text is not directly used by ProductionCard for publications
+    demoUrl: "/portfolio/articles/cl1", // Placeholder link
+    demoLinkText: "Leer resumen", // This text isn't directly used for publications in ProductionCard now
     peerReview: "Doble ciego",
     certification: "Certificado de publicación disponible",
     publishedDocumentUrl: "https://example.com/link-to-chapter-cl1",
@@ -68,7 +72,7 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "ODS y tecnología", hint: "SDG technology" },
         { src: "https://placehold.co/600x400.png", alt: "Tecnología verde", hint: "green tech" }
     ],
-    demoUrl: "/portfolio/articles/cl2", // Corresponds to ProductionItem.id 'cl2' from portfolio
+    demoUrl: "/portfolio/articles/cl2",
     demoLinkText: "Leer resumen",
     peerReview: "Revisado por comité editorial",
     certification: "Incluido en libro certificado ISBN: 978-X-XXXXX-XX-X",
@@ -85,15 +89,16 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Negocios digitales", hint: "digital business" },
         { src: "https://placehold.co/600x400.png", alt: "Innovación tecnológica", hint: "tech innovation" }
     ],
-    demoUrl: "/portfolio/articles/cl3", // Corresponds to ProductionItem.id 'cl3' from portfolio
+    demoUrl: "/portfolio/articles/cl3",
     demoLinkText: "Leer resumen",
     peerReview: "Simple ciego",
     certification: "Certificado de autoría",
     publishedDocumentUrl: "https://example.com/link-to-chapter-cl3",
     publishedDocumentLabel: "Acceder a través de Publicaciones Académicas S.A.",
   },
-  // Artículos Científicos (Tomados del portafolio - los 3 primeros)
- {
+
+  // Artículos Científicos (Primeros 3 del portafolio)
+  {
     id: "ar1_home",
     title: "Impacto de la IA en la Educación Superior",
     summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos. Publicado en Revista Q3 de Innovación Educativa.",
@@ -103,7 +108,7 @@ const allProductions: ProductionItem[] = [
     ],
     category: "Artículo Científico",
     thematicArea: "Inteligencia Artificial",
-    demoUrl: "/portfolio/articles/ar1", // Corresponds to ProductionItem.id 'ar1' from portfolio
+    demoUrl: "/portfolio/articles/ar1",
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
     indexations: "Scopus Q3, Web of Science ESCI",
@@ -122,7 +127,7 @@ const allProductions: ProductionItem[] = [
     ],
     category: "Artículo Científico",
     thematicArea: "Ciberseguridad en Salud",
-    demoUrl: "/portfolio/articles/ar2", // Corresponds to ProductionItem.id 'ar2' from portfolio
+    demoUrl: "/portfolio/articles/ar2",
     demoLinkText: "Leer resumen",
     peerReview: "Simple ciego",
     indexations: "PubMed, Scopus Q2",
@@ -141,7 +146,7 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Gráfico de análisis de sentimiento", hint: "sentiment chart" },
         { src: "https://placehold.co/600x400.png", alt: "Datos de redes sociales", hint: "social data" }
     ],
-    demoUrl: "/portfolio/articles/ar3", // Corresponds to ProductionItem.id 'ar3' from portfolio
+    demoUrl: "/portfolio/articles/ar3",
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
     indexations: "Scielo, DOAJ",
@@ -157,7 +162,7 @@ const MAX_ITEMS_PREVIEW = 3;
 export function ProduccionesDisponibles() {
   const [activeTab, setActiveTab] = useState<string>("software");
 
-  const categories = ["Software", "Capítulos de Libro", "Artículos Científicos"];
+  const categories = ["Software", "Capítulo de Libro", "Artículo Científico"];
   const tabValues = ["software", "libros", "articulos"];
 
   const getProductionsForCategory = (categoryName: ProductionItem['category']) => {
@@ -169,7 +174,7 @@ export function ProduccionesDisponibles() {
       <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-8">
         {categories.map((cat, index) => (
           <TabsTrigger key={tabValues[index]} value={tabValues[index]}>
-            {cat}
+            {cat === "Capítulo de Libro" ? "Capítulos de Libro" : cat}
           </TabsTrigger>
         ))}
       </TabsList>
@@ -194,5 +199,3 @@ export function ProduccionesDisponibles() {
     </Tabs>
   );
 }
-
-    
