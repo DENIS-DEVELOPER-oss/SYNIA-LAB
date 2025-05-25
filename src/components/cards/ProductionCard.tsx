@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tag, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus } from "lucide-react";
 import { useState } from "react";
 
 export interface ProductionImage {
@@ -22,8 +22,8 @@ export interface ProductionItem {
   summary: string;
   videoUrl?: string;
   imageUrls?: ProductionImage[];
-  demoUrl: string;
-  demoLinkText: string;
+  demoUrl: string; // Maintained for software, can be '#' or similar for publications if no direct external link
+  demoLinkText: string; // Will be overridden for publications by "Participar"
 }
 
 interface ProductionCardProps {
@@ -121,11 +121,27 @@ export function ProductionCard({ production }: ProductionCardProps) {
         <CardDescription className="text-sm line-clamp-3">{production.summary}</CardDescription>
       </CardContent>
       <CardFooter>
-        <Button asChild variant="link" className="p-0 text-primary hover:underline">
-          <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
-            {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
-          </Link>
-        </Button>
+        {isSoftware ? (
+          <Button asChild variant="link" className="p-0 text-primary hover:underline">
+            <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
+              {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
+            </Link>
+          </Button>
+        ) : isPublication ? (
+          <Button asChild variant="outline" className="text-accent border-accent hover:bg-accent/10">
+            <Link href="/auth/signin">
+              <UserPlus className="mr-2 h-4 w-4" />
+              Participar
+            </Link>
+          </Button>
+        ) : (
+           // Fallback or default button if category doesn't match software or publication
+          <Button asChild variant="link" className="p-0 text-primary hover:underline">
+            <Link href={production.demoUrl}>
+              {production.demoLinkText}
+            </Link>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
