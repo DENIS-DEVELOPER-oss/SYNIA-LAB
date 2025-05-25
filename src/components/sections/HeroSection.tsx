@@ -19,9 +19,9 @@ export function HeroSection() {
               {SITE_SLOGAN}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-center md:justify-start gap-4">
-              <Button 
-                asChild 
-                size="lg" 
+              <Button
+                asChild
+                size="lg"
                 className="w-full sm:w-auto group bg-sky-500 hover:bg-sky-600 text-primary-foreground transition-transform hover:scale-105"
               >
                 <Link href="/services">
@@ -29,10 +29,10 @@ export function HeroSection() {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="ghost" 
+              <Button
+                asChild
+                size="lg"
+                variant="ghost"
                 className="w-full sm:w-auto text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground transition-transform hover:scale-105"
               >
                 <Link href="/courses">
@@ -40,10 +40,10 @@ export function HeroSection() {
                   Explorar Cursos
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="ghost" 
+              <Button
+                asChild
+                size="lg"
+                variant="ghost"
                 className="w-full sm:w-auto text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground transition-transform hover:scale-105"
               >
                 <Link href="/auth/signin">Plataforma Usuario</Link>
@@ -54,7 +54,7 @@ export function HeroSection() {
           {/* Columna Derecha: Imagen Ilustrativa */}
           <div className="flex justify-center md:justify-end">
             <Image
-              src="https://placehold.co/600x450.png" // Placeholder, reemplazar con una ilustración adecuada
+              src="https://placehold.co/600x450.png" 
               alt="Ilustración de tecnología y colaboración"
               width={600}
               height={450}
