@@ -10,13 +10,13 @@ import { ArrowRight } from "lucide-react";
 
 const allProductions: ProductionItem[] = [
   // Software
-  { id: "sw1", title: "Plataforma IA para Análisis de Datos", category: "Software", thematicArea: "Inteligencia Artificial", summary: "Sistema avanzado que utiliza machine learning para procesar y visualizar grandes volúmenes de datos en tiempo real.", videoUrl: "https://www.youtube.com/embed/BBJa32lCaaY", demoUrl: "/portfolio/software/sw1", demoLinkText: "Explorar App" },
-  { id: "sw2", title: "App Móvil Educativa Interactiva", category: "Software", thematicArea: "Educación", summary: "Aplicación móvil para iOS y Android diseñada para mejorar el aprendizaje mediante gamificación y contenido interactivo.", videoUrl: "https://www.youtube.com/embed/W_xKx_0f458", demoUrl: "/portfolio/software/sw2", demoLinkText: "Explorar App" },
-  { id: "sw3", title: "Sistema de Gestión de Proyectos Ágil", category: "Software", thematicArea: "Productividad", summary: "Herramienta web para la gestión de equipos y proyectos utilizando metodologías ágiles como Scrum y Kanban.", videoUrl: "https://www.youtube.com/embed/UtyKe22z0mM", demoUrl: "/portfolio/software/sw3", demoLinkText: "Explorar App" },
-  { id: "sw4", title: "E-commerce Personalizable", category: "Software", thematicArea: "Negocios Digitales", summary: "Solución de comercio electrónico completa, adaptable a diversas necesidades y con integraciones de pasarelas de pago.", videoUrl: "https://www.youtube.com/embed/xVQZxYl8iK8", demoUrl: "/portfolio/software/sw4", demoLinkText: "Explorar App" },
+  { id: "sw1_home", title: "Plataforma IA para Análisis de Datos", category: "Software", thematicArea: "Inteligencia Artificial", summary: "Sistema avanzado que utiliza machine learning para procesar y visualizar grandes volúmenes de datos en tiempo real.", videoUrl: "https://www.youtube.com/embed/BBJa32lCaaY", demoUrl: "/portfolio/software/sw1", demoLinkText: "Explorar App" },
+  { id: "sw2_home", title: "App Móvil Educativa Interactiva", category: "Software", thematicArea: "Educación", summary: "Aplicación móvil para iOS y Android diseñada para mejorar el aprendizaje mediante gamificación y contenido interactivo.", videoUrl: "https://www.youtube.com/embed/W_xKx_0f458", demoUrl: "/portfolio/software/sw2", demoLinkText: "Explorar App" },
+  { id: "sw3_home", title: "Sistema de Gestión de Proyectos Ágil", category: "Software", thematicArea: "Productividad", summary: "Herramienta web para la gestión de equipos y proyectos utilizando metodologías ágiles como Scrum y Kanban.", videoUrl: "https://www.youtube.com/embed/UtyKe22z0mM", demoUrl: "/portfolio/software/sw3", demoLinkText: "Explorar App" },
+  { id: "sw4_home", title: "E-commerce Personalizable", category: "Software", thematicArea: "Negocios Digitales", summary: "Solución de comercio electrónico completa, adaptable a diversas necesidades y con integraciones de pasarelas de pago.", videoUrl: "https://www.youtube.com/embed/xVQZxYl8iK8", demoUrl: "/portfolio/software/sw4", demoLinkText: "Explorar App" },
   // Capítulos de Libro
   { 
-    id: "cl1", 
+    id: "cl1_home", 
     title: "IA en la Transformación Educativa", 
     category: "Capítulo de Libro", 
     thematicArea: "Educación y Tecnología", 
@@ -26,10 +26,14 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Futuro de la educación", hint: "future education" }
     ],
     demoUrl: "/portfolio/articles/cl1", 
-    demoLinkText: "Leer Fragmento" 
+    demoLinkText: "Leer Fragmento",
+    peerReview: "Doble ciego",
+    certification: "Certificado editorial",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl1-home",
+    publishedDocumentLabel: "Consultar en Editorial Académica",
   },
   { 
-    id: "cl2", 
+    id: "cl2_home", 
     title: "Ética en el Desarrollo de Software", 
     category: "Capítulo de Libro", 
     thematicArea: "Ética Profesional", 
@@ -39,37 +43,14 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Desarrollo responsable", hint: "responsible development" }
     ],
     demoUrl: "/portfolio/articles/cl2", 
-    demoLinkText: "Acceder Capítulo" 
-  },
-  { 
-    id: "cl3", 
-    title: "Big Data y su Aplicación en Salud", 
-    category: "Capítulo de Libro", 
-    thematicArea: "Salud Digital", 
-    summary: "Exploración de cómo el Big Data está revolucionando la investigación y la práctica médica.", 
-    imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Análisis de datos en salud", hint: "health data analysis" },
-        { src: "https://placehold.co/600x400.png", alt: "Tecnología médica", hint: "medical technology" }
-    ],
-    demoUrl: "/portfolio/articles/cl3", 
-    demoLinkText: "Consultar Contenido" 
-  },
-  { 
-    id: "cl4", 
-    title: "Ciberseguridad en la Era Digital", 
-    category: "Capítulo de Libro", 
-    thematicArea: "Seguridad Informática", 
-    summary: "Guía esencial sobre los principios de ciberseguridad para proteger activos digitales en el entorno actual.", 
-    imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Escudo de ciberseguridad", hint: "cybersecurity shield" },
-        { src: "https://placehold.co/600x400.png", alt: "Protección de datos", hint: "data protection" }
-    ],
-    demoUrl: "/portfolio/articles/cl4", 
-    demoLinkText: "Ver Resumen Extendido" 
+    demoLinkText: "Acceder Capítulo",
+    peerReview: "Revisión por pares simple",
+    certification: "Incluido en libro con ISBN",
+    publishedDocumentLabel: "Disponible en biblioteca digital",
   },
   // Artículos Científicos
   { 
-    id: "ac1", 
+    id: "ac1_home", 
     title: "Modelo Predictivo para Deserción Estudiantil", 
     category: "Artículo Científico", 
     thematicArea: "Data Science", 
@@ -79,10 +60,15 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Análisis de datos educativos", hint: "education data" }
     ],
     demoUrl: "/portfolio/articles/ac1", 
-    demoLinkText: "Leer Artículo (PDF)" 
+    demoLinkText: "Leer Artículo (PDF)",
+    peerReview: "Doble ciego",
+    indexations: "Scopus Q2, Latindex",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/journal.xxxx.home",
+    publishedDocumentLabel: "Ver en Revista Científica XYZ",
   },
   { 
-    id: "ac2", 
+    id: "ac2_home", 
     title: "Impacto de las Redes Sociales en Jóvenes", 
     category: "Artículo Científico", 
     thematicArea: "Ciencias Sociales", 
@@ -92,33 +78,11 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Salud mental y tecnología", hint: "mental health tech" }
     ],
     demoUrl: "/portfolio/articles/ac2", 
-    demoLinkText: "Ver Publicación" 
-  },
-  { 
-    id: "ac3", 
-    title: "Usabilidad de Interfaces en Software Médico", 
-    category: "Artículo Científico", 
-    thematicArea: "Interacción Humano-Computador", 
-    summary: "Estudio comparativo de la usabilidad en diferentes tipos de software utilizados en el sector salud.", 
-    imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Interfaz de software médico", hint: "medical software UI" },
-        { src: "https://placehold.co/600x400.png", alt: "Pruebas de usabilidad", hint: "usability testing" }
-    ],
-    demoUrl: "/portfolio/articles/ac3", 
-    demoLinkText: "Descargar Estudio" 
-  },
-  { 
-    id: "ac4", 
-    title: "Blockchain para Trazabilidad Alimentaria", 
-    category: "Artículo Científico", 
-    thematicArea: "Tecnologías Emergentes", 
-    summary: "Propuesta de un sistema basado en blockchain para mejorar la trazabilidad y seguridad en la cadena de suministro de alimentos.", 
-    imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Cadena de bloques", hint: "blockchain tech" },
-        { src: "https://placehold.co/600x400.png", alt: "Alimentos seguros", hint: "food safety" }
-    ],
-    demoUrl: "/portfolio/articles/ac4", 
-    demoLinkText: "Acceder Investigación" 
+    demoLinkText: "Ver Publicación",
+    peerReview: "Simple ciego",
+    indexations: "Scielo, Redalyc",
+    certification: "No aplica",
+    publishedDocumentLabel: "Artículo disponible en ResearchGate",
   },
 ];
 
@@ -164,3 +128,4 @@ export function ProduccionesDisponibles() {
     </Tabs>
   );
 }
+

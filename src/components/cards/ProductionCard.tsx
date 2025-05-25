@@ -6,7 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus, FileText, BookOpen, Info } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +26,12 @@ export interface ProductionItem {
   imageUrls?: ProductionImage[];
   demoUrl: string;
   demoLinkText: string;
+  // New fields for publication details
+  peerReview?: string; 
+  certification?: string; 
+  indexations?: string; 
+  publishedDocumentUrl?: string;
+  publishedDocumentLabel?: string;
 }
 
 interface ProductionCardProps {
@@ -121,7 +128,7 @@ export function ProductionCard({ production }: ProductionCardProps) {
       <CardContent className="flex-grow">
         <CardDescription className="text-sm line-clamp-3">{production.summary}</CardDescription>
       </CardContent>
-      <CardFooter className={cn("flex gap-2", isSoftware ? "justify-between" : "justify-start")}>
+      <CardFooter className={cn("flex gap-2", isSoftware ? "justify-between" : "justify-start flex-wrap")}>
         {isSoftware && (
           <>
             <Button asChild variant="link" className="p-0 text-primary hover:underline">
@@ -138,12 +145,49 @@ export function ProductionCard({ production }: ProductionCardProps) {
           </>
         )}
         {isPublication && (
-          <Button asChild variant="outline" className="text-accent border-accent hover:bg-accent/10">
-            <Link href="/auth/signin">
-              <UserPlus className="mr-2 h-4 w-4" />
-              Participar
-            </Link>
-          </Button>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="secondary" size="sm" className="flex-1 sm:flex-none">
+                  <Info className="mr-1.5 h-4 w-4" /> Ver detalles
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="text-primary">{production.title}</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-3 py-2 text-sm">
+                  <p><strong className="font-medium text-foreground">Resumen:</strong> {production.summary}</p>
+                  <p><strong className="font-medium text-foreground">Área Temática:</strong> {production.thematicArea}</p>
+                  
+                  <h4 className="font-semibold text-foreground pt-2">Características de Publicación:</h4>
+                  {production.peerReview && <p><strong className="font-medium">Evaluación por pares:</strong> {production.peerReview}</p>}
+                  {production.category === 'Artículo Científico' && production.indexations && (
+                    <p><strong className="font-medium">Indexaciones:</strong> {production.indexations}</p>
+                  )}
+                  {production.certification && <p><strong className="font-medium">Certificación:</strong> {production.certification}</p>}
+                  
+                  {production.publishedDocumentUrl && (
+                    <Button asChild variant="link" className="p-0 text-primary hover:underline">
+                      <Link href={production.publishedDocumentUrl} target="_blank" rel="noopener noreferrer">
+                        {production.publishedDocumentLabel || "Acceder al documento"} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
+                      </Link>
+                    </Button>
+                  )}
+                  {!production.publishedDocumentUrl && production.publishedDocumentLabel && (
+                     <p><strong className="font-medium">Documento:</strong> {production.publishedDocumentLabel}</p>
+                  )}
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            <Button asChild variant="outline" size="sm" className="text-accent border-accent hover:bg-accent/10 flex-1 sm:flex-none">
+              <Link href="/auth/signin">
+                <UserPlus className="mr-1.5 h-4 w-4" />
+                Participar
+              </Link>
+            </Button>
+          </div>
         )}
         {!isSoftware && !isPublication && (
            // Fallback or default button if category doesn't match software or publication

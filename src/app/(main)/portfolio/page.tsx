@@ -2,9 +2,9 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { ProductionCard, type ProductionItem } from "@/components/cards/ProductionCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Briefcase, BookCopy, FileText } from "lucide-react"; // Updated icons
+import { Briefcase, BookCopy, FileText } from "lucide-react";
 
-const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY"; // Placeholder video
+const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY"; 
 
 const softwareItems: ProductionItem[] = [
   { 
@@ -14,7 +14,7 @@ const softwareItems: ProductionItem[] = [
     videoUrl: placeholderVideoUrl, 
     category: "Software", 
     thematicArea: "Tecnología Educativa", 
-    demoUrl: "/portfolio/software/sw1", 
+    demoUrl: "/portfolio/software/sw1", // This could be a link to a live demo or a specific page
     demoLinkText: "Explorar App" 
   },
   { 
@@ -24,7 +24,7 @@ const softwareItems: ProductionItem[] = [
     videoUrl: placeholderVideoUrl, 
     category: "Software", 
     thematicArea: "Investigación Aplicada", 
-    demoUrl: "/portfolio/software/sw2", 
+    demoUrl: "/portfolio/software/sw2",
     demoLinkText: "Explorar App" 
   },
    { 
@@ -50,8 +50,12 @@ const bookChapterItems: ProductionItem[] = [
     ],
     category: "Capítulo de Libro", 
     thematicArea: "Ingeniería de Software", 
-    demoUrl: "/portfolio/articles/cl1", 
-    demoLinkText: "Leer resumen" 
+    demoUrl: "/portfolio/articles/cl1", // Link to the chapter or abstract page
+    demoLinkText: "Leer resumen", // This text won't be used if "Ver detalles" is implemented
+    peerReview: "Doble ciego",
+    certification: "Certificado de publicación disponible",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl1",
+    publishedDocumentLabel: "Ver en Editorial XYZ",
   },
   {
     id: "cl2",
@@ -64,7 +68,11 @@ const bookChapterItems: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Tecnología verde", hint: "green tech" }
     ],
     demoUrl: "/portfolio/articles/cl2",
-    demoLinkText: "Leer resumen"
+    demoLinkText: "Leer resumen",
+    peerReview: "Revisado por comité editorial",
+    certification: "Incluido en libro certificado ISBN: 978-X-XXXXX-XX-X",
+    publishedDocumentUrl: "https://example.com/link-to-chapter-cl2",
+    publishedDocumentLabel: "Consultar en Repositorio Institucional",
   },
 ];
 
@@ -80,7 +88,12 @@ const scientificArticleItems: ProductionItem[] = [
     category: "Artículo Científico", 
     thematicArea: "Inteligencia Artificial", 
     demoUrl: "/portfolio/articles/ar1", 
-    demoLinkText: "Leer resumen" 
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    indexations: "Scopus Q3, Web of Science ESCI",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://doi.org/10.xxxx/journal.xxxx",
+    publishedDocumentLabel: "Ver en Journal de Innovación Educativa",
   },
   { 
     id: "ar2", 
@@ -93,7 +106,12 @@ const scientificArticleItems: ProductionItem[] = [
     category: "Artículo Científico", 
     thematicArea: "Ciberseguridad en Salud", 
     demoUrl: "/portfolio/articles/ar2",
-    demoLinkText: "Leer resumen" 
+    demoLinkText: "Leer resumen",
+    peerReview: "Simple ciego",
+    indexations: "PubMed, Scopus Q2",
+    certification: "Disponible a solicitud",
+    publishedDocumentUrl: "https://jmir.org/article/xxxx",
+    publishedDocumentLabel: "Leer en JMIR",
   },
   {
     id: "ar3",
@@ -106,7 +124,12 @@ const scientificArticleItems: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Datos de redes sociales", hint: "social data" }
     ],
     demoUrl: "/portfolio/articles/ar3",
-    demoLinkText: "Leer resumen"
+    demoLinkText: "Leer resumen",
+    peerReview: "Doble ciego",
+    indexations: "Scielo, DOAJ",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://journaldatascience.org/article/yyyy",
+    publishedDocumentLabel: "Ver en Journal of Data Science",
   },
   {
     id: "ar4",
@@ -119,7 +142,12 @@ const scientificArticleItems: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Estudiantes interactuando online", hint: "students online" }
     ],
     demoUrl: "/portfolio/articles/ar4",
-    demoLinkText: "Leer resumen"
+    demoLinkText: "Leer resumen",
+    peerReview: "Revisión abierta",
+    indexations: "Scopus Q1, SSCI",
+    certification: "Certificado de publicación",
+    publishedDocumentUrl: "https://elsevier.com/computers-education/zzzz",
+    publishedDocumentLabel: "Leer en Computers & Education",
   }
 ];
 
@@ -173,7 +201,6 @@ export default function PortfolioPage() {
     </>
   );
 }
-// TODO: Create dynamic routes for individual portfolio items if needed (e.g., /portfolio/software/[id]).
-// The demoUrl fields currently point to generic paths.
-
+// The demoUrl fields for publications now point to an abstract or article page.
+// The `ProductionCard` will handle the "Ver detalles" modal.
     
