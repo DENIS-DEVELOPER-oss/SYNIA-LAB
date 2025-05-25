@@ -21,7 +21,7 @@ const softwareItems: ProductionItem[] = [
     id: "sw2", 
     title: "App Móvil para Investigación de Campo", 
     summary: "Aplicación intuitiva para la recolección y análisis de datos en tiempo real.", 
-    videoUrl: placeholderVideoUrl, 
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Different placeholder
     category: "Software", 
     thematicArea: "Investigación Aplicada", 
     demoUrl: "/portfolio/software/sw2",
@@ -31,10 +31,40 @@ const softwareItems: ProductionItem[] = [
     id: "sw3", 
     title: "Plataforma E-learning Interactiva", 
     summary: "Solución completa para cursos online, con seguimiento de progreso y herramientas colaborativas.", 
-    videoUrl: placeholderVideoUrl, 
+    videoUrl: "https://www.youtube.com/embed/u_xRemrA9oU", // Different placeholder
     category: "Software", 
     thematicArea: "Educación Digital", 
     demoUrl: "/portfolio/software/sw3",
+    demoLinkText: "Explorar App" 
+  },
+  { 
+    id: "sw4", 
+    title: "Herramienta de Análisis de Datos con IA", 
+    summary: "Software de escritorio para el análisis predictivo y visualización de grandes conjuntos de datos utilizando IA.", 
+    videoUrl: "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Different placeholder
+    category: "Software", 
+    thematicArea: "Inteligencia Artificial", 
+    demoUrl: "/portfolio/software/sw4",
+    demoLinkText: "Explorar App" 
+  },
+  { 
+    id: "sw5", 
+    title: "Plataforma de Telemedicina Segura", 
+    summary: "Sistema web y móvil para consultas médicas remotas, cumpliendo con estándares de seguridad y privacidad de datos.", 
+    videoUrl: "https://www.youtube.com/embed/6g3g0_C3oas", // Different placeholder
+    category: "Software", 
+    thematicArea: "Salud Digital", 
+    demoUrl: "/portfolio/software/sw5",
+    demoLinkText: "Explorar App" 
+  },
+  { 
+    id: "sw6", 
+    title: "Simulador de Procesos Industriales", 
+    summary: "Aplicación especializada para la simulación y optimización de procesos en la industria manufacturera.", 
+    videoUrl: "https://www.youtube.com/embed/Yx6sTUnPz4E", // Different placeholder
+    category: "Software", 
+    thematicArea: "Ingeniería y Simulación", 
+    demoUrl: "/portfolio/software/sw6",
     demoLinkText: "Explorar App" 
   },
 ];
@@ -445,3 +475,4 @@ export default function PortfolioPage() {
   );
 }
     
+
