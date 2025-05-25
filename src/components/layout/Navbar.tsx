@@ -35,17 +35,17 @@ export function Navbar() {
   const UserAvatar = () => (
     <Avatar className="h-9 w-9">
       <AvatarImage src={user?.photoURL || undefined} alt={user?.displayName || user?.email || "User"} />
-      <AvatarFallback className="bg-primary-foreground/20 text-primary-foreground">
+      <AvatarFallback className="bg-muted text-muted-foreground">
         {user?.email ? user.email.charAt(0).toUpperCase() : <UserCircle size={20} />}
       </AvatarFallback>
     </Avatar>
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-primary-foreground/10 bg-primary text-primary-foreground">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background text-foreground">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo /> {/* Logo component will now render with light colors */}
-        <nav className="hidden items-center space-x-2 md:flex">
+        <Logo />
+        <nav className="hidden items-center space-x-1 md:flex">
           {NAV_LINKS.map((link) => (
             <Button
               key={link.href}
@@ -54,8 +54,8 @@ export function Navbar() {
               className={cn(
                 "text-sm font-medium",
                 pathname === link.href
-                  ? "text-primary-foreground font-semibold bg-primary-foreground/10"
-                  : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                  ? "text-primary font-semibold bg-accent/10"
+                  : "text-muted-foreground hover:text-primary hover:bg-accent/10"
               )}
             >
               <Link href={link.href}>{link.label}</Link>
@@ -67,7 +67,7 @@ export function Navbar() {
           {!loading && user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-primary-foreground/10">
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-accent/10">
                   <UserAvatar />
                 </Button>
               </DropdownMenuTrigger>
@@ -96,20 +96,20 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : !loading ? (
-            <Button asChild variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+            <Button asChild variant="ghost" size="sm" className="text-foreground hover:bg-accent/10 hover:text-primary">
               <Link href="/auth/signin">
                 <LogIn className="mr-2 h-4 w-4" />
                 Iniciar Sesión
               </Link>
             </Button>
           ) : (
-             <div className="h-9 w-9 animate-pulse rounded-full bg-primary-foreground/20"></div>
+             <div className="h-9 w-9 animate-pulse rounded-full bg-muted"></div>
           )}
           
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-primary-foreground hover:bg-primary-foreground/10"
+            className="md:hidden text-foreground hover:bg-accent/10"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
@@ -120,18 +120,18 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full border-t border-primary-foreground/10 bg-primary shadow-lg md:hidden">
+        <div className="absolute top-16 left-0 w-full border-t border-border bg-background shadow-lg md:hidden">
           <nav className="flex flex-col space-y-1 p-4">
             {NAV_LINKS.map((link) => (
               <Button
                 key={link.href}
-                variant={pathname === link.href ? "default" : "ghost"}
+                variant="ghost"
                 asChild
                 className={cn(
-                  "justify-start text-primary-foreground",
+                  "justify-start",
                   pathname === link.href 
-                  ? "bg-primary-foreground/20 hover:bg-primary-foreground/30" 
-                  : "hover:bg-primary-foreground/10"
+                  ? "text-primary bg-accent/10 hover:bg-accent/20" 
+                  : "text-foreground hover:bg-accent/10 hover:text-primary"
                 )}
               >
                 <Link href={link.href}>{link.label}</Link>
@@ -143,4 +143,3 @@ export function Navbar() {
     </header>
   );
 }
-
