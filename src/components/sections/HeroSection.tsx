@@ -41,14 +41,14 @@ export function HeroSection() {
 
   useEffect(() => {
     const slideInterval = setInterval(goToNext, AUTO_SLIDE_INTERVAL);
-    return () => clearInterval(slideInterval); // Limpiar el intervalo al desmontar
-  }, [currentIndex]); // Reiniciar el intervalo si currentIndex cambia manualmente
+    return () => clearInterval(slideInterval);
+  }, [currentIndex]);
 
   return (
     <>
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Columna Izquierda: Texto y Botones */}
             <div className="text-center md:text-left">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
@@ -91,8 +91,8 @@ export function HeroSection() {
             </div>
 
             {/* Columna Derecha: Carrusel de Imágenes */}
-            <div className="flex justify-center md:justify-end">
-              <div className="relative w-full max-w-lg h-auto aspect-[4/3] rounded-lg shadow-2xl overflow-hidden group">
+            <div className="flex justify-center md:justify-end mt-8 md:mt-0">
+              <div className="relative w-full max-w-md sm:max-w-lg h-auto aspect-[4/3] rounded-lg shadow-2xl overflow-hidden group">
                 {carouselImages.map((image, index) => (
                   <div
                     key={index}
@@ -108,7 +108,7 @@ export function HeroSection() {
                       objectFit="cover"
                       className="cursor-pointer"
                       data-ai-hint={image.dataAiHint}
-                      priority={index === 0} // Prioritize loading the first image
+                      priority={index === 0}
                     />
                   </div>
                 ))}
