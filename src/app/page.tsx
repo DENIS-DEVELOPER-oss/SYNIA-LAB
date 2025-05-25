@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Users, Send, LogIn, GraduationCap } from "lucide-react"; 
+import { Users, Send, LogIn } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles"; // Import the new section
@@ -16,7 +16,6 @@ const featuredServices = [
     icon: Users,
     iconColor: "text-purple-600",
     link: "/services",
-    highlighted: false,
   },
   {
     title: "Explorar Cursos",
@@ -24,7 +23,6 @@ const featuredServices = [
     icon: Send,
     iconColor: "text-orange-500",
     link: "/courses",
-    highlighted: true,
   },
   {
     title: "Plataforma Usuario",
@@ -32,7 +30,6 @@ const featuredServices = [
     icon: LogIn,
     iconColor: "text-green-600",
     link: "/auth/signin", 
-    highlighted: false,
   },
 ];
 
@@ -55,19 +52,19 @@ export default function HomePage() {
                 <Card 
                   className={cn(
                     "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
-                    service.highlighted ? "bg-primary text-primary-foreground" : "bg-card"
+                    "bg-card group-hover:border-2 group-hover:border-primary" // Always use bg-card and add hover border
                   )}
                 >
                   <div className={cn(
                     "mb-6 flex h-24 w-24 items-center justify-center rounded-full",
-                    service.highlighted ? "bg-primary-foreground" : "bg-muted border"
+                    "bg-muted border" // Always use bg-muted for icon container
                   )}>
-                    <service.icon className={cn("h-12 w-12", service.iconColor, service.highlighted ? (service.iconColor.includes("purple") ? "text-purple-600" : service.iconColor.includes("orange") ? "text-orange-500" : "text-green-600") : "")} />
+                    <service.icon className={cn("h-12 w-12", service.iconColor)} />
                   </div>
-                  <CardTitle className={cn("text-2xl mb-3", service.highlighted ? "text-primary-foreground" : "text-card-foreground")}>
+                  <CardTitle className={cn("text-2xl mb-3", "text-card-foreground")}> 
                     {service.title}
                   </CardTitle>
-                  <CardDescription className={cn("text-base flex-grow", service.highlighted ? "text-primary-foreground/90" : "text-muted-foreground")}>
+                  <CardDescription className={cn("text-base flex-grow", "text-muted-foreground")}>
                     {service.description}
                   </CardDescription>
                 </Card>
