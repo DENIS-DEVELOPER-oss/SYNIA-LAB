@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus, Info } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -26,13 +26,12 @@ export interface ProductionItem {
   imageUrls?: ProductionImage[];
   demoUrl: string;
   demoLinkText: string;
-  // New fields for publication details
   peerReview?: string; 
   certification?: string; 
   indexations?: string; 
   publishedDocumentUrl?: string;
   publishedDocumentLabel?: string;
-  indexationType?: 'Scielo' | 'Scopus'; // Added for categorizing scientific articles
+  indexationType?: 'Scielo' | 'Scopus';
 }
 
 interface ProductionCardProps {
@@ -129,7 +128,12 @@ export function ProductionCard({ production }: ProductionCardProps) {
       <CardContent className="flex-grow">
         <CardDescription className="text-sm line-clamp-3">{production.summary}</CardDescription>
       </CardContent>
-      <CardFooter className={cn("flex gap-2", isSoftware ? "justify-between" : "justify-start flex-wrap")}>
+      <CardFooter className={cn(
+        "flex items-center gap-x-4 gap-y-2 p-4", // Base styles for padding and gap
+        isSoftware 
+          ? "flex-wrap justify-center sm:justify-between" // Software: wrap, center on small, between on sm+
+          : "flex-wrap justify-start" // Publications: wrap, start alignment
+      )}>
         {isSoftware && (
           <>
             <Button asChild variant="link" className="p-0 text-primary hover:underline">
@@ -146,10 +150,10 @@ export function ProductionCard({ production }: ProductionCardProps) {
           </>
         )}
         {isPublication && (
-          <div className="flex gap-2 w-full sm:w-auto">
+          <div className="flex flex-wrap gap-2 w-full sm:flex-nowrap sm:w-auto"> {/*Ensure buttons can wrap on very small screens but prefer inline on sm+ */}
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="secondary" size="sm" className="flex-1 sm:flex-none">
+                <Button variant="secondary" size="sm" className="flex-grow sm:flex-grow-0"> {/* Allow button to grow if it's the only one or on small screen */}
                   <Info className="mr-1.5 h-4 w-4" /> Ver detalles
                 </Button>
               </DialogTrigger>
@@ -182,7 +186,7 @@ export function ProductionCard({ production }: ProductionCardProps) {
               </DialogContent>
             </Dialog>
 
-            <Button asChild variant="outline" size="sm" className="text-accent border-accent hover:bg-accent/10 flex-1 sm:flex-none">
+            <Button asChild variant="outline" size="sm" className="text-accent border-accent hover:bg-accent/10 flex-grow sm:flex-grow-0">
               <Link href="/auth/signin">
                 <UserPlus className="mr-1.5 h-4 w-4" />
                 Participar
@@ -191,7 +195,6 @@ export function ProductionCard({ production }: ProductionCardProps) {
           </div>
         )}
         {!isSoftware && !isPublication && (
-           // Fallback or default button if category doesn't match software or publication
           <Button asChild variant="link" className="p-0 text-primary hover:underline">
             <Link href={production.demoUrl}>
               {production.demoLinkText}
