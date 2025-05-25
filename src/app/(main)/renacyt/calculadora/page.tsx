@@ -12,16 +12,28 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function RenacytCalculatorPage() {
-  const nivelesInvestigador = [
-    { nivel: "Investigador Distinguido", grupo: "Carlos Monge Medrano", puntajeMinProduccion: "Índice h ≥ 10", puntajeTotal: "150" },
-    { nivel: "Nivel I", grupo: "Carlos Monge Medrano", puntajeMinProduccion: "55", puntajeTotal: "80" },
-    { nivel: "Nivel II", grupo: "Carlos Monge Medrano", puntajeMinProduccion: "35", puntajeTotal: "50" },
-    { nivel: "Nivel III", grupo: "Carlos Monge Medrano", puntajeMinProduccion: "25", puntajeTotal: "30" },
-    { nivel: "Nivel IV", grupo: "Carlos Monge Medrano", puntajeMinProduccion: "15", puntajeTotal: "20" },
-    { nivel: "Nivel I", grupo: "María Rostworowski Tovar", puntajeMinProduccion: "30", puntajeTotal: "35" },
-    { nivel: "Nivel II", grupo: "María Rostworowski Tovar", puntajeMinProduccion: "20", puntajeTotal: "25" },
-    { nivel: "Nivel III", grupo: "María Rostworowski Tovar", puntajeMinProduccion: "10", puntajeTotal: "15" },
-    { nivel: "Nivel IV", grupo: "María Rostworowski Tovar", puntajeMinProduccion: "5", puntajeTotal: "10" },
+  const tabla2Items = [
+    {
+      indicador: "G. Publicaciones científicas y producción tecnológica en los últimos 3 años.",
+      items: [
+        "Scopus/WoS (Cuartil Q1 de Scimago o JCR)",
+        "Scopus/WoS (Cuartil Q2 de Scimago o JCR)",
+        "Scopus/WoS (Cuartil Q3 de Scimago o JCR)",
+        "Scopus/WoS (Cuartil Q4 de Scimago o JCR)",
+        "Conference Proceedings (Scopus o WoS) / SciELO",
+        "Patente de invención o Certificado de Obtentor o Paquete tecnológico",
+        "Patente de modelo de utilidad o certificado de derecho de autor por software",
+        "Libro",
+        "Capítulo de libro",
+      ],
+    },
+    {
+      indicador: "H. Participación en proyectos de CTI, incluyendo aquellos desarrollados para la empresa.",
+      items: [
+        "Participación como Investigador Principal",
+        "Participación como Investigador Asociado, Post-Doctoral, Doctoral u otro",
+      ],
+    },
   ];
 
   const bonificacionesEjemplo = [
@@ -29,6 +41,9 @@ export default function RenacytCalculatorPage() {
     { criterio: "Patente internacional concedida", bonificacion: "+10 puntos", nota: "Adicional al puntaje de patente" },
     { criterio: "Participación en proyectos con financiamiento externo competitivo", bonificacion: "+3 puntos por proyecto", nota: "Máximo 2 proyectos" },
   ];
+
+  const totalItemsTabla2 = tabla2Items.reduce((sum, current) => sum + current.items.length, 0);
+
 
   return (
     <>
@@ -189,35 +204,44 @@ export default function RenacytCalculatorPage() {
 
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl">Tabla 2: Niveles de Investigador RENACYT y Puntajes Mínimos</CardTitle>
-            <p className="text-sm text-muted-foreground">Clasificación según grupo y puntaje total obtenido.</p>
+            <CardTitle className="text-2xl">Tabla 2: Criterio de Evaluación e Ítems de Verificación para Mantenerse Activo en el RENACYT</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto rounded-lg border">
               <Table>
+                <TableCaption className="text-left p-4 text-sm text-muted-foreground bg-muted/30 mt-0 border-t">
+                    (***) Son obligatorios los indicadores G o H para mantenerse activo en el RENACYT y se considerará los límites establecidos en la Tabla N° 1. En caso la productividad esté asociada a la institución principal, se tendrá la condición de activo afiliado.
+                </TableCaption>
                 <TableHeader className="bg-muted/50">
                   <TableRow>
-                    <TableHead className="font-semibold">Nivel</TableHead>
-                    <TableHead className="font-semibold">Grupo de Investigador</TableHead>
-                    <TableHead className="text-center font-semibold">Puntaje Mínimo en Producción Científica</TableHead>
-                    <TableHead className="text-center font-semibold">Puntaje Total Mínimo</TableHead>
+                    <TableHead className="w-3/12 font-semibold">Criterio</TableHead>
+                    <TableHead className="w-4/12 font-semibold">Indicador</TableHead>
+                    <TableHead className="w-5/12 font-semibold">Ítem</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {nivelesInvestigador.map((item, index) => (
-                    <TableRow key={index}>
-                      <TableCell className="font-medium">{item.nivel}</TableCell>
-                      <TableCell>{item.grupo}</TableCell>
-                      <TableCell className="text-center">{item.puntajeMinProduccion}</TableCell>
-                      <TableCell className="text-center">{item.puntajeTotal}</TableCell>
-                    </TableRow>
+                  {tabla2Items.map((indicadorObj, idx) => (
+                    <React.Fragment key={idx}>
+                      {indicadorObj.items.map((item, itemIdx) => (
+                        <TableRow key={`${idx}-${itemIdx}`}>
+                          {idx === 0 && itemIdx === 0 && (
+                            <TableCell rowSpan={totalItemsTabla2} className="font-medium align-top border-r">
+                              Productividad en los últimos 3 años (***)
+                            </TableCell>
+                          )}
+                          {itemIdx === 0 && (
+                            <TableCell rowSpan={indicadorObj.items.length} className="align-top border-r">
+                              {indicadorObj.indicador}
+                            </TableCell>
+                          )}
+                          <TableCell>{item}</TableCell>
+                        </TableRow>
+                      ))}
+                    </React.Fragment>
                   ))}
                 </TableBody>
               </Table>
             </div>
-             <p className="mt-4 text-xs text-muted-foreground">
-              Nota: Los puntajes y requisitos específicos pueden variar según la normativa vigente del CONCYTEC. Esta tabla es una representación general.
-            </p>
           </CardContent>
         </Card>
 
@@ -257,3 +281,4 @@ export default function RenacytCalculatorPage() {
     </>
   );
 }
+
