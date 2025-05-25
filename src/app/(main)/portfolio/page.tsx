@@ -14,7 +14,7 @@ const softwareItems: ProductionItem[] = [
     videoUrl: placeholderVideoUrl, 
     category: "Software", 
     thematicArea: "Tecnología Educativa", 
-    demoUrl: "/portfolio/software/sw1", // This could be a link to a live demo or a specific page
+    demoUrl: "/portfolio/software/sw1", 
     demoLinkText: "Explorar App" 
   },
   { 
@@ -213,6 +213,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/journal.xxxx",
     publishedDocumentLabel: "Ver en Journal de Innovación Educativa",
+    indexationType: "Scopus",
   },
   { 
     id: "ar2", 
@@ -231,6 +232,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Disponible a solicitud",
     publishedDocumentUrl: "https://jmir.org/article/xxxx",
     publishedDocumentLabel: "Leer en JMIR",
+    indexationType: "Scopus",
   },
   {
     id: "ar3",
@@ -249,6 +251,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://journaldatascience.org/article/yyyy",
     publishedDocumentLabel: "Ver en Journal of Data Science",
+    indexationType: "Scielo",
   },
   {
     id: "ar4",
@@ -267,6 +270,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://elsevier.com/computers-education/zzzz",
     publishedDocumentLabel: "Leer en Computers & Education",
+    indexationType: "Scopus",
   },
   {
     id: "ar5",
@@ -285,6 +289,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/ijhci.xxxx",
     publishedDocumentLabel: "Ver en IJHCI",
+    indexationType: "Scopus",
   },
   {
     id: "ar6",
@@ -303,6 +308,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/aisociety.xxxx",
     publishedDocumentLabel: "Ver en AI & Society",
+    indexationType: "Scopus",
   },
   {
     id: "ar7",
@@ -317,10 +323,11 @@ const scientificArticleItems: ProductionItem[] = [
     demoUrl: "/portfolio/articles/ar7",
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
-    indexations: "Web of Science Q4, EBSCO",
+    indexations: "Scielo, Web of Science Q4, EBSCO", // Scielo primary for this example
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/jemf.xxxx",
     publishedDocumentLabel: "Ver en JEMF",
+    indexationType: "Scielo",
   },
   {
     id: "ar8",
@@ -339,6 +346,7 @@ const scientificArticleItems: ProductionItem[] = [
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/ieee.edu.xxxx",
     publishedDocumentLabel: "Ver en IEEE Transactions on Education",
+    indexationType: "Scopus",
   },
   {
     id: "ar9",
@@ -353,15 +361,19 @@ const scientificArticleItems: ProductionItem[] = [
     demoUrl: "/portfolio/articles/ar9",
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
-    indexations: "Scopus Q1, ScienceDirect",
+    indexations: "Scielo, Scopus Q1, ScienceDirect", // Scielo primary for this example
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/eswa.xxxx",
     publishedDocumentLabel: "Ver en Expert Systems with Applications",
+    indexationType: "Scielo",
   }
 ];
 
 
 export default function PortfolioPage() {
+  const scieloArticles = scientificArticleItems.filter(item => item.indexationType === 'Scielo');
+  const scopusArticles = scientificArticleItems.filter(item => item.indexationType === 'Scopus');
+
   return (
     <>
       <PageHeader
@@ -393,10 +405,32 @@ export default function PortfolioPage() {
           </TabsContent>
 
           <TabsContent value="scientificArticles">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {scientificArticleItems.map(item => (
-                <ProductionCard key={item.id} production={item} />
-              ))}
+            <div>
+              <h2 className="text-2xl font-semibold mb-6 text-center sm:text-left">Indexados en Scielo</h2>
+              {scieloArticles.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {scieloArticles.map(item => (
+                    <ProductionCard key={item.id} production={item} />
+                  ))}
+                </div>
+              ) : (
+                <p className="text-muted-foreground text-center">No hay artículos de Scielo disponibles por el momento.</p>
+              )}
+            </div>
+
+            <hr className="my-12" />
+
+            <div>
+              <h2 className="text-2xl font-semibold mb-6 text-center sm:text-left">Indexados en Scopus</h2>
+              {scopusArticles.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {scopusArticles.map(item => (
+                  <ProductionCard key={item.id} production={item} />
+                ))}
+              </div>
+              ) : (
+                <p className="text-muted-foreground text-center">No hay artículos de Scopus disponibles por el momento.</p>
+              )}
             </div>
           </TabsContent>
 
@@ -410,7 +444,4 @@ export default function PortfolioPage() {
     </>
   );
 }
-// The demoUrl fields for publications now point to an abstract or article page.
-// The `ProductionCard` will handle the "Ver detalles" modal.
     
-

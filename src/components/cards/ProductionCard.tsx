@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus, FileText, BookOpen, Info } from "lucide-react";
+import { Tag, ChevronLeft, ChevronRight, ExternalLink, UserPlus, Info } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +32,7 @@ export interface ProductionItem {
   indexations?: string; 
   publishedDocumentUrl?: string;
   publishedDocumentLabel?: string;
+  indexationType?: 'Scielo' | 'Scopus'; // Added for categorizing scientific articles
 }
 
 interface ProductionCardProps {
@@ -168,7 +169,7 @@ export function ProductionCard({ production }: ProductionCardProps) {
                   {production.certification && <p><strong className="font-medium">Certificación:</strong> {production.certification}</p>}
                   
                   {production.publishedDocumentUrl && (
-                    <Button asChild variant="link" className="p-0 text-primary hover:underline">
+                    <Button asChild variant="link" className="p-0 text-primary hover:underline mt-2">
                       <Link href={production.publishedDocumentUrl} target="_blank" rel="noopener noreferrer">
                         {production.publishedDocumentLabel || "Acceder al documento"} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
                       </Link>
