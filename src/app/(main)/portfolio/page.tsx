@@ -1,8 +1,8 @@
 
 import { PageHeader } from "@/components/shared/PageHeader";
-import { ProductionCard, type ProductionItem, type ProductionImage } from "@/components/cards/ProductionCard";
+import { ProductionCard, type ProductionItem } from "@/components/cards/ProductionCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Briefcase, BookOpen } from "lucide-react";
+import { Briefcase, BookCopy, FileText } from "lucide-react"; // Updated icons
 
 const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY"; // Placeholder video
 
@@ -39,20 +39,7 @@ const softwareItems: ProductionItem[] = [
   },
 ];
 
-const publicationItems: ProductionItem[] = [
-  { 
-    id: "ar1", 
-    title: "Impacto de la IA en la Educación Superior", 
-    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos. Publicado en Revista Q3 de Innovación Educativa.", 
-    imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Gráfico de IA en educación", hint: "AI education chart" },
-        { src: "https://placehold.co/600x400.png", alt: "Estudiantes con tecnología", hint: "students technology" }
-    ],
-    category: "Artículo Científico", 
-    thematicArea: "Inteligencia Artificial", 
-    demoUrl: "/portfolio/articles/ar1", 
-    demoLinkText: "Leer resumen" 
-  },
+const bookChapterItems: ProductionItem[] = [
   { 
     id: "cl1", 
     title: "Metodologías Ágiles en el Desarrollo de Software", 
@@ -64,19 +51,6 @@ const publicationItems: ProductionItem[] = [
     category: "Capítulo de Libro", 
     thematicArea: "Ingeniería de Software", 
     demoUrl: "/portfolio/articles/cl1", 
-    demoLinkText: "Leer resumen" 
-  },
-  { 
-    id: "ar2", 
-    title: "Blockchain y la Seguridad de Datos en Salud", 
-    summary: "Investigación sobre el potencial de blockchain para asegurar la integridad de registros médicos. Publicado en JMIR.", 
-    imageUrls: [
-        { src: "https://placehold.co/600x400.png", alt: "Red Blockchain", hint: "blockchain network" },
-        { src: "https://placehold.co/600x400.png", alt: "Datos médicos seguros", hint: "secure medical data" }
-    ],
-    category: "Artículo Científico", 
-    thematicArea: "Ciberseguridad en Salud", 
-    demoUrl: "/portfolio/articles/ar2",
     demoLinkText: "Leer resumen" 
   },
   {
@@ -91,6 +65,35 @@ const publicationItems: ProductionItem[] = [
     ],
     demoUrl: "/portfolio/articles/cl2",
     demoLinkText: "Leer resumen"
+  },
+];
+
+const scientificArticleItems: ProductionItem[] = [
+ { 
+    id: "ar1", 
+    title: "Impacto de la IA en la Educación Superior", 
+    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos. Publicado en Revista Q3 de Innovación Educativa.", 
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Gráfico de IA en educación", hint: "AI education chart" },
+        { src: "https://placehold.co/600x400.png", alt: "Estudiantes con tecnología", hint: "students technology" }
+    ],
+    category: "Artículo Científico", 
+    thematicArea: "Inteligencia Artificial", 
+    demoUrl: "/portfolio/articles/ar1", 
+    demoLinkText: "Leer resumen" 
+  },
+  { 
+    id: "ar2", 
+    title: "Blockchain y la Seguridad de Datos en Salud", 
+    summary: "Investigación sobre el potencial de blockchain para asegurar la integridad de registros médicos. Publicado en JMIR.", 
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Red Blockchain", hint: "blockchain network" },
+        { src: "https://placehold.co/600x400.png", alt: "Datos médicos seguros", hint: "secure medical data" }
+    ],
+    category: "Artículo Científico", 
+    thematicArea: "Ciberseguridad en Salud", 
+    demoUrl: "/portfolio/articles/ar2",
+    demoLinkText: "Leer resumen" 
   },
   {
     id: "ar3",
@@ -130,9 +133,10 @@ export default function PortfolioPage() {
       />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <Tabs defaultValue="software" className="w-full">
-          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 mb-8">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-8">
             <TabsTrigger value="software" className="flex items-center gap-2"><Briefcase className="h-4 w-4"/>Proyectos de Software</TabsTrigger>
-            <TabsTrigger value="publications" className="flex items-center gap-2"><BookOpen className="h-4 w-4"/>Publicaciones</TabsTrigger>
+            <TabsTrigger value="bookChapters" className="flex items-center gap-2"><BookCopy className="h-4 w-4"/>Capítulos de Libro</TabsTrigger>
+            <TabsTrigger value="scientificArticles" className="flex items-center gap-2"><FileText className="h-4 w-4"/>Artículos Científicos</TabsTrigger>
           </TabsList>
           
           <TabsContent value="software">
@@ -142,19 +146,29 @@ export default function PortfolioPage() {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="publications">
+
+          <TabsContent value="bookChapters">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {publicationItems.map(item => (
+              {bookChapterItems.map(item => (
                 <ProductionCard key={item.id} production={item} />
               ))}
             </div>
-             <div className="mt-12 text-center">
-                <p className="text-muted-foreground">
-                  Más publicaciones y proyectos se añaden continuamente.
-                </p>
+          </TabsContent>
+
+          <TabsContent value="scientificArticles">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {scientificArticleItems.map(item => (
+                <ProductionCard key={item.id} production={item} />
+              ))}
             </div>
           </TabsContent>
+
         </Tabs>
+         <div className="mt-12 text-center">
+            <p className="text-muted-foreground">
+              Más producciones y proyectos se añaden continuamente.
+            </p>
+        </div>
       </div>
     </>
   );
@@ -162,4 +176,4 @@ export default function PortfolioPage() {
 // TODO: Create dynamic routes for individual portfolio items if needed (e.g., /portfolio/software/[id]).
 // The demoUrl fields currently point to generic paths.
 
-
+    
