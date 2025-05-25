@@ -23,15 +23,15 @@ export function HeroSection() {
   const [modalImage, setModalImage] = useState<{ src: string; alt: string; dataAiHint: string } | null>(null);
 
   const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? carouselImages.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+    );
   };
 
   const goToNext = () => {
-    const isLastSlide = currentIndex === carouselImages.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const handleImageClick = (image: { src: string; alt: string; dataAiHint: string }) => {
@@ -42,12 +42,34 @@ export function HeroSection() {
   useEffect(() => {
     const slideInterval = setInterval(goToNext, AUTO_SLIDE_INTERVAL);
     return () => clearInterval(slideInterval);
-  }, [currentIndex]); // Re-run effect if currentIndex changes due to manual navigation
+  }, []); // Removed currentIndex from dependencies to prevent interval reset on manual nav
 
   return (
     <>
-      <section className="bg-[#80deea] text-primary-foreground py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section className="relative text-primary-foreground py-16 md:py-24 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline // Important for iOS
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          poster="https://placehold.co/1920x1080.png" // Optional: shows an image while video loads
+        >
+          {/* 
+            Replace with your video URL. 
+            Example from Pixabay: https://pixabay.com/videos/network-plexus-internet-connection-13745/ 
+            You'd download it and host it or use a direct link if allowed.
+            For this placeholder, I'll use a common stock video URL format, but it might not work long-term.
+          */}
+          <source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4" />
+          Tu navegador no soporta videos HTML5.
+        </video>
+        
+        {/* Overlay to ensure text readability - optional, adjust opacity as needed */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-10"></div>
+
+        <div className="container relative mx-auto px-4 z-20">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Columna Izquierda: Texto y Botones */}
             <div className="text-center md:text-left">
@@ -57,7 +79,7 @@ export function HeroSection() {
               <p className="mt-6 max-w-md mx-auto md:mx-0 text-lg font-light text-primary-foreground/90 sm:text-xl md:mt-8 md:max-w-3xl">
                 {SITE_SLOGAN}
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center md:justify-start gap-4">
                 <Button
                   asChild
                   size="lg"
