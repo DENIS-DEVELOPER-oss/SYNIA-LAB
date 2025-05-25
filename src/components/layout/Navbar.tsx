@@ -44,8 +44,23 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background text-foreground">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
-        <nav className="hidden items-center space-x-1 md:flex">
+        {/* Left side: Mobile Menu Icon (mobile only) and Logo */}
+        <div className="flex items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden mr-2 text-primary hover:bg-accent/10"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+          <Logo />
+        </div>
+
+        {/* Middle: Desktop Nav Links (desktop only) */}
+        {/* Uses absolute positioning for centeringdesktop nav links, common pattern for flex justify-between parents */}
+        <nav className="hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-1 md:flex">
           {NAV_LINKS.map((link) => (
             <Button
               key={link.href}
@@ -63,6 +78,7 @@ export function Navbar() {
           ))}
         </nav>
 
+        {/* Right side: Auth section */}
         <div className="flex items-center space-x-3">
           {!loading && user ? (
             <DropdownMenu>
@@ -75,7 +91,7 @@ export function Navbar() {
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm font-medium leading-none">
-                      {user.displayName || user.email}
+                      {user.displayName || user.email?.split('@')[0] || 'Usuario'}
                     </p>
                     <p className="text-xs leading-none text-muted-foreground">
                       {user.email}
@@ -103,22 +119,13 @@ export function Navbar() {
               </Link>
             </Button>
           ) : (
-             <div className="h-9 w-9 animate-pulse rounded-full bg-muted"></div>
+             <div className="h-9 w-9 animate-pulse rounded-full bg-muted"></div> // Skeleton for loading state
           )}
-          
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-foreground hover:bg-accent/10"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
+          {/* The mobile menu button was here previously, now it's on the left */}
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Panel */}
       {isMobileMenuOpen && (
         <div className="absolute top-16 left-0 w-full border-t border-border bg-background shadow-lg md:hidden">
           <nav className="flex flex-col space-y-1 p-4">
@@ -137,6 +144,22 @@ export function Navbar() {
                 <Link href={link.href}>{link.label}</Link>
               </Button>
             ))}
+            {/* Separator and Auth links for mobile menu if not logged in */}
+            {!loading && !user && (
+              <>
+                <DropdownMenuSeparator className="bg-border my-2" />
+                 <Button
+                    variant="ghost"
+                    asChild
+                    className="justify-start text-foreground hover:bg-accent/10 hover:text-primary"
+                  >
+                    <Link href="/auth/signin">
+                      <LogIn className="mr-2 h-4 w-4" />
+                      Iniciar Sesión
+                    </Link>
+                  </Button>
+              </>
+            )}
           </nav>
         </div>
       )}
