@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React from "react"; // Added React import
 
 export default function RenacytCalculatorPage() {
   const tabla2Items = [
@@ -281,4 +282,3 @@ export default function RenacytCalculatorPage() {
     </>
   );
 }
-
