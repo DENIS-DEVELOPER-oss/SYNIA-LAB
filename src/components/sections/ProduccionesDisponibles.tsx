@@ -8,53 +8,51 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY";
-
 const allProductions: ProductionItem[] = [
-  // Software (Tomados del portafolio)
-  { 
-    id: "sw1_home", 
-    title: "Sistema de Gestión Académica Avanzado", 
-    summary: "Desarrollo de una plataforma integral para la administración de instituciones educativas.", 
-    videoUrl: placeholderVideoUrl, 
-    category: "Software", 
-    thematicArea: "Educación", 
-    demoUrl: "/portfolio/software/sw1", 
-    demoLinkText: "Explorar App" 
+  // Software (Tomados del portafolio - los 3 primeros)
+  {
+    id: "sw1_home",
+    title: "Sistema de Gestión Académica Avanzado",
+    summary: "Desarrollo de una plataforma integral para la administración de instituciones educativas.",
+    videoUrl: "https://www.youtube.com/embed/BBJa32lCaaY",
+    category: "Software",
+    thematicArea: "Educación",
+    demoUrl: "/portfolio/software/sw1",
+    demoLinkText: "Explorar App"
   },
-  { 
-    id: "sw2_home", 
-    title: "App Móvil para Investigación de Campo", 
-    summary: "Aplicación intuitiva para la recolección y análisis de datos en tiempo real.", 
+  {
+    id: "sw2_home",
+    title: "App Móvil para Investigación de Campo",
+    summary: "Aplicación intuitiva para la recolección y análisis de datos en tiempo real.",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    category: "Software", 
-    thematicArea: "Investigación Aplicada", 
+    category: "Software",
+    thematicArea: "Investigación Aplicada",
     demoUrl: "/portfolio/software/sw2",
-    demoLinkText: "Explorar App" 
+    demoLinkText: "Explorar App"
   },
-   { 
-    id: "sw3_home", 
-    title: "Plataforma E-learning Interactiva", 
-    summary: "Solución completa para cursos online, con seguimiento de progreso y herramientas colaborativas.", 
+   {
+    id: "sw3_home",
+    title: "Plataforma E-learning Interactiva",
+    summary: "Solución completa para cursos online, con seguimiento de progreso y herramientas colaborativas.",
     videoUrl: "https://www.youtube.com/embed/u_xRemrA9oU",
-    category: "Software", 
-    thematicArea: "Educación", 
+    category: "Software",
+    thematicArea: "Educación",
     demoUrl: "/portfolio/software/sw3",
-    demoLinkText: "Explorar App" 
+    demoLinkText: "Explorar App"
   },
-  // Capítulos de Libro (Tomados del portafolio)
-  { 
-    id: "cl1_home", 
-    title: "Metodologías Ágiles en el Desarrollo de Software", 
-    summary: "Capítulo de libro que explora la aplicación práctica de Scrum y Kanban en equipos de desarrollo.", 
+  // Capítulos de Libro (Tomados del portafolio - los 3 primeros)
+  {
+    id: "cl1_home",
+    title: "Metodologías Ágiles en el Desarrollo de Software",
+    summary: "Capítulo de libro que explora la aplicación práctica de Scrum y Kanban en equipos de desarrollo.",
     imageUrls: [
         { src: "https://placehold.co/600x400.png", alt: "Portada libro metodologías ágiles", hint: "agile book cover" },
         { src: "https://placehold.co/600x400.png", alt: "Diagrama de Scrum", hint: "scrum diagram" }
     ],
-    category: "Capítulo de Libro", 
-    thematicArea: "Ingeniería de Software", 
-    demoUrl: "/portfolio/articles/cl1", 
-    demoLinkText: "Leer resumen", 
+    category: "Capítulo de Libro",
+    thematicArea: "Ingeniería de Software",
+    demoUrl: "/portfolio/articles/cl1", // Corresponds to ProductionItem.id 'cl1' from portfolio
+    demoLinkText: "Leer resumen", // This text is not directly used by ProductionCard for publications
     peerReview: "Doble ciego",
     certification: "Certificado de publicación disponible",
     publishedDocumentUrl: "https://example.com/link-to-chapter-cl1",
@@ -70,7 +68,7 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "ODS y tecnología", hint: "SDG technology" },
         { src: "https://placehold.co/600x400.png", alt: "Tecnología verde", hint: "green tech" }
     ],
-    demoUrl: "/portfolio/articles/cl2",
+    demoUrl: "/portfolio/articles/cl2", // Corresponds to ProductionItem.id 'cl2' from portfolio
     demoLinkText: "Leer resumen",
     peerReview: "Revisado por comité editorial",
     certification: "Incluido en libro certificado ISBN: 978-X-XXXXX-XX-X",
@@ -87,51 +85,51 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Negocios digitales", hint: "digital business" },
         { src: "https://placehold.co/600x400.png", alt: "Innovación tecnológica", hint: "tech innovation" }
     ],
-    demoUrl: "/portfolio/articles/cl3",
+    demoUrl: "/portfolio/articles/cl3", // Corresponds to ProductionItem.id 'cl3' from portfolio
     demoLinkText: "Leer resumen",
     peerReview: "Simple ciego",
     certification: "Certificado de autoría",
     publishedDocumentUrl: "https://example.com/link-to-chapter-cl3",
     publishedDocumentLabel: "Acceder a través de Publicaciones Académicas S.A.",
   },
-  // Artículos Científicos (Tomados del portafolio)
- { 
-    id: "ar1_home", 
-    title: "Impacto de la IA en la Educación Superior", 
-    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos. Publicado en Revista Q3 de Innovación Educativa.", 
+  // Artículos Científicos (Tomados del portafolio - los 3 primeros)
+ {
+    id: "ar1_home",
+    title: "Impacto de la IA en la Educación Superior",
+    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos. Publicado en Revista Q3 de Innovación Educativa.",
     imageUrls: [
         { src: "https://placehold.co/600x400.png", alt: "Gráfico de IA en educación", hint: "AI education chart" },
         { src: "https://placehold.co/600x400.png", alt: "Estudiantes con tecnología", hint: "students technology" }
     ],
-    category: "Artículo Científico", 
-    thematicArea: "Inteligencia Artificial", 
-    demoUrl: "/portfolio/articles/ar1", 
+    category: "Artículo Científico",
+    thematicArea: "Inteligencia Artificial",
+    demoUrl: "/portfolio/articles/ar1", // Corresponds to ProductionItem.id 'ar1' from portfolio
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
     indexations: "Scopus Q3, Web of Science ESCI",
+    indexationType: "Scopus",
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/journal.xxxx",
     publishedDocumentLabel: "Ver en Journal de Innovación Educativa",
-    indexationType: "Scopus",
   },
-  { 
-    id: "ar2_home", 
-    title: "Blockchain y la Seguridad de Datos en Salud", 
-    summary: "Investigación sobre el potencial de blockchain para asegurar la integridad de registros médicos. Publicado en JMIR.", 
+  {
+    id: "ar2_home",
+    title: "Blockchain y la Seguridad de Datos en Salud",
+    summary: "Investigación sobre el potencial de blockchain para asegurar la integridad de registros médicos. Publicado en JMIR.",
     imageUrls: [
         { src: "https://placehold.co/600x400.png", alt: "Red Blockchain", hint: "blockchain network" },
         { src: "https://placehold.co/600x400.png", alt: "Datos médicos seguros", hint: "secure medical data" }
     ],
-    category: "Artículo Científico", 
-    thematicArea: "Ciberseguridad en Salud", 
-    demoUrl: "/portfolio/articles/ar2",
+    category: "Artículo Científico",
+    thematicArea: "Ciberseguridad en Salud",
+    demoUrl: "/portfolio/articles/ar2", // Corresponds to ProductionItem.id 'ar2' from portfolio
     demoLinkText: "Leer resumen",
     peerReview: "Simple ciego",
     indexations: "PubMed, Scopus Q2",
+    indexationType: "Scopus",
     certification: "Disponible a solicitud",
     publishedDocumentUrl: "https://jmir.org/article/xxxx",
     publishedDocumentLabel: "Leer en JMIR",
-    indexationType: "Scopus",
   },
   {
     id: "ar3_home",
@@ -143,14 +141,14 @@ const allProductions: ProductionItem[] = [
         { src: "https://placehold.co/600x400.png", alt: "Gráfico de análisis de sentimiento", hint: "sentiment chart" },
         { src: "https://placehold.co/600x400.png", alt: "Datos de redes sociales", hint: "social data" }
     ],
-    demoUrl: "/portfolio/articles/ar3",
+    demoUrl: "/portfolio/articles/ar3", // Corresponds to ProductionItem.id 'ar3' from portfolio
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
     indexations: "Scielo, DOAJ",
+    indexationType: "Scielo",
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://journaldatascience.org/article/yyyy",
     publishedDocumentLabel: "Ver en Journal of Data Science",
-    indexationType: "Scielo",
   },
 ];
 
@@ -178,7 +176,7 @@ export function ProduccionesDisponibles() {
 
       {categories.map((cat, index) => (
         <TabsContent key={tabValues[index]} value={tabValues[index]}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"> {/* Adjusted lg:grid-cols-3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {getProductionsForCategory(cat as ProductionItem['category']).map((production) => (
               <ProductionCard key={production.id} production={production} />
             ))}
@@ -196,3 +194,5 @@ export function ProduccionesDisponibles() {
     </Tabs>
   );
 }
+
+    
