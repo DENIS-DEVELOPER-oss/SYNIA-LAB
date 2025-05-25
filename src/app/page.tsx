@@ -13,19 +13,19 @@ const generalLinks = [
   {
     title: "Nuestros Servicios",
     description: "Descubre cómo podemos impulsar tus proyectos académicos y tecnológicos.",
-    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/settings/9449/9449016.gif", // Ejemplo: Reemplazar con GIF deseado
+    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/settings/9449/9449016.gif", // Settings/Tools icon
     link: "/services",
   },
   {
     title: "Explorar Cursos",
     description: "Capacítate con nuestros programas especializados y actualizados.",
-    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/book/13980/13980341.gif", // Ejemplo: Reemplazar con GIF deseado
+    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/book/13980/13980341.gif", // Book/Courses icon
     link: "/courses",
   },
   {
     title: "Plataforma Usuario",
     description: "Accede a tu panel personalizado y gestiona tus recursos y proyectos.",
-    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/avatar/13774/13774088.gif", // Ejemplo: Reemplazar con GIF deseado
+    iconUrl: "https://cdn.animations.flaticon.com/dist/min/img/animations/icons/avatar/13774/13774088.gif", // User/Avatar icon
     link: "/auth/signin",
   },
 ];
