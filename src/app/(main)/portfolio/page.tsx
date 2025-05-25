@@ -13,7 +13,7 @@ const softwareItems: ProductionItem[] = [
     summary: "Desarrollo de una plataforma integral para la administración de instituciones educativas.", 
     videoUrl: placeholderVideoUrl, 
     category: "Software", 
-    thematicArea: "Tecnología Educativa", 
+    thematicArea: "Educación", 
     demoUrl: "/portfolio/software/sw1", 
     demoLinkText: "Explorar App" 
   },
@@ -21,7 +21,7 @@ const softwareItems: ProductionItem[] = [
     id: "sw2", 
     title: "App Móvil para Investigación de Campo", 
     summary: "Aplicación intuitiva para la recolección y análisis de datos en tiempo real.", 
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Different placeholder
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     category: "Software", 
     thematicArea: "Investigación Aplicada", 
     demoUrl: "/portfolio/software/sw2",
@@ -31,9 +31,9 @@ const softwareItems: ProductionItem[] = [
     id: "sw3", 
     title: "Plataforma E-learning Interactiva", 
     summary: "Solución completa para cursos online, con seguimiento de progreso y herramientas colaborativas.", 
-    videoUrl: "https://www.youtube.com/embed/u_xRemrA9oU", // Different placeholder
+    videoUrl: "https://www.youtube.com/embed/u_xRemrA9oU",
     category: "Software", 
-    thematicArea: "Educación Digital", 
+    thematicArea: "Educación", 
     demoUrl: "/portfolio/software/sw3",
     demoLinkText: "Explorar App" 
   },
@@ -41,7 +41,7 @@ const softwareItems: ProductionItem[] = [
     id: "sw4", 
     title: "Herramienta de Análisis de Datos con IA", 
     summary: "Software de escritorio para el análisis predictivo y visualización de grandes conjuntos de datos utilizando IA.", 
-    videoUrl: "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Different placeholder
+    videoUrl: "https://www.youtube.com/embed/3JZ_D3ELwOQ",
     category: "Software", 
     thematicArea: "Inteligencia Artificial", 
     demoUrl: "/portfolio/software/sw4",
@@ -51,9 +51,9 @@ const softwareItems: ProductionItem[] = [
     id: "sw5", 
     title: "Plataforma de Telemedicina Segura", 
     summary: "Sistema web y móvil para consultas médicas remotas, cumpliendo con estándares de seguridad y privacidad de datos.", 
-    videoUrl: "https://www.youtube.com/embed/6g3g0_C3oas", // Different placeholder
+    videoUrl: "https://www.youtube.com/embed/6g3g0_C3oas",
     category: "Software", 
-    thematicArea: "Salud Digital", 
+    thematicArea: "Salud", 
     demoUrl: "/portfolio/software/sw5",
     demoLinkText: "Explorar App" 
   },
@@ -61,7 +61,7 @@ const softwareItems: ProductionItem[] = [
     id: "sw6", 
     title: "Simulador de Procesos Industriales", 
     summary: "Aplicación especializada para la simulación y optimización de procesos en la industria manufacturera.", 
-    videoUrl: "https://www.youtube.com/embed/Yx6sTUnPz4E", // Different placeholder
+    videoUrl: "https://www.youtube.com/embed/Yx6sTUnPz4E",
     category: "Software", 
     thematicArea: "Ingeniería y Simulación", 
     demoUrl: "/portfolio/software/sw6",
@@ -353,7 +353,7 @@ const scientificArticleItems: ProductionItem[] = [
     demoUrl: "/portfolio/articles/ar7",
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
-    indexations: "Scielo, Web of Science Q4, EBSCO", // Scielo primary for this example
+    indexations: "Scielo, Web of Science Q4, EBSCO", 
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/jemf.xxxx",
     publishedDocumentLabel: "Ver en JEMF",
@@ -391,7 +391,7 @@ const scientificArticleItems: ProductionItem[] = [
     demoUrl: "/portfolio/articles/ar9",
     demoLinkText: "Leer resumen",
     peerReview: "Doble ciego",
-    indexations: "Scielo, Scopus Q1, ScienceDirect", // Scielo primary for this example
+    indexations: "Scielo, Scopus Q1, ScienceDirect", 
     certification: "Certificado de publicación",
     publishedDocumentUrl: "https://doi.org/10.xxxx/eswa.xxxx",
     publishedDocumentLabel: "Ver en Expert Systems with Applications",
