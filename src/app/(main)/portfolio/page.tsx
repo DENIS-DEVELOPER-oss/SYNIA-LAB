@@ -1,10 +1,17 @@
 
 import { PageHeader } from "@/components/shared/PageHeader";
-import { ProductionCard, type ProductionItem } from "@/components/cards/ProductionCard";
+import { ProductionCard, type ProductionItem, type ProductionImage } from "@/components/cards/ProductionCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Briefcase, BookOpen, GraduationCap } from "lucide-react";
+import { Briefcase, BookOpen } from "lucide-react";
 
 const placeholderVideoUrl = "https://www.youtube.com/embed/BBJa32lCaaY"; // Placeholder video
+
+const softwareImagePlaceholder: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Software placeholder", hint: "software interface" };
+const articleImagePlaceholder1: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Artículo placeholder 1", hint: "chart data" };
+const articleImagePlaceholder2: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Artículo placeholder 2", hint: "document text" };
+const bookImagePlaceholder1: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Libro placeholder 1", hint: "book cover" };
+const bookImagePlaceholder2: ProductionImage = { src: "https://placehold.co/600x400.png", alt: "Libro placeholder 2", hint: "text page" };
+
 
 const softwareItems: ProductionItem[] = [
   { 
@@ -27,70 +34,67 @@ const softwareItems: ProductionItem[] = [
     demoUrl: "/portfolio/software/sw2", // Placeholder link
     demoLinkText: "Explorar App" 
   },
-  // Add more software items if needed, following the ProductionItem structure
+   { 
+    id: "sw3", 
+    title: "Plataforma E-learning Interactiva", 
+    summary: "Solución completa para cursos online, con seguimiento de progreso y herramientas colaborativas.", 
+    videoUrl: placeholderVideoUrl, 
+    category: "Software", 
+    thematicArea: "Educación Digital", 
+    demoUrl: "/portfolio/software/sw3",
+    demoLinkText: "Acceder Plataforma" 
+  },
 ];
 
-const articleItems: ProductionItem[] = [
+const publicationItems: ProductionItem[] = [
   { 
     id: "ar1", 
     title: "Impacto de la IA en la Educación Superior", 
-    summary: "Publicado en Revista Q3 de Innovación Educativa.", 
-    videoUrl: placeholderVideoUrl, 
+    summary: "Análisis exhaustivo de cómo la inteligencia artificial está transformando los paradigmas educativos y las metodologías de enseñanza en el nivel superior. Publicado en Revista Q3 de Innovación Educativa.", 
+    imageUrls: [articleImagePlaceholder1, articleImagePlaceholder2],
     category: "Artículo Científico", 
     thematicArea: "Inteligencia Artificial", 
-    demoUrl: "/portfolio/articles/ar1", // Placeholder link
-    demoLinkText: "Leer publicación" 
+    demoUrl: "/portfolio/articles/ar1", 
+    demoLinkText: "Leer resumen" 
   },
   { 
-    id: "ar2", 
-    title: "Análisis Comparativo de Metodologías Ágiles", 
-    summary: "Capítulo de libro en 'Desarrollo de Software Moderno'.", 
-    videoUrl: placeholderVideoUrl, 
+    id: "cl1", 
+    title: "Metodologías Ágiles en el Desarrollo de Software Moderno", 
+    summary: "Capítulo de libro que explora la aplicación práctica de Scrum, Kanban y XP en equipos de desarrollo, enfocado en mejorar la eficiencia y la calidad del producto final.", 
+    imageUrls: [bookImagePlaceholder1, bookImagePlaceholder2],
     category: "Capítulo de Libro", 
     thematicArea: "Ingeniería de Software", 
-    demoUrl: "/portfolio/articles/ar2", // Placeholder link
-    demoLinkText: "Ver capítulo" 
+    demoUrl: "/portfolio/articles/cl1", 
+    demoLinkText: "Leer resumen" 
   },
-  // Add more article/book items if needed
+   { 
+    id: "ar2", 
+    title: "Blockchain y la Seguridad de Datos en Salud", 
+    summary: "Investigación sobre el potencial de la tecnología blockchain para asegurar la integridad y privacidad de los registros médicos electrónicos. Publicado en Journal of Medical Internet Research (JMIR).", 
+    imageUrls: [
+        { src: "https://placehold.co/600x400.png", alt: "Blockchain network", hint: "blockchain network" },
+        { src: "https://placehold.co/600x400.png", alt: "Secure data", hint: "secure data" }
+    ],
+    category: "Artículo Científico", 
+    thematicArea: "Ciberseguridad en Salud", 
+    demoUrl: "/portfolio/articles/ar2",
+    demoLinkText: "Leer resumen" 
+  },
 ];
 
-const thesisItems: ProductionItem[] = [
-  { 
-    id: "th1", 
-    title: "Tesis Doctoral: Modelos Predictivos en Finanzas", 
-    summary: "Asesoría completa culminada con mención honorífica.", 
-    videoUrl: placeholderVideoUrl, 
-    category: "Tesis Doctoral", 
-    thematicArea: "Finanzas Cuantitativas", 
-    demoUrl: "/portfolio/theses/th1", // Placeholder link
-    demoLinkText: "Conocer más" 
-  },
-  { 
-    id: "th2", 
-    title: "Tesis de Maestría: Usabilidad en E-commerce", 
-    summary: "Investigación aplicada para optimizar la experiencia de usuario.", 
-    videoUrl: placeholderVideoUrl, 
-    category: "Tesis de Maestría", 
-    thematicArea: "Experiencia de Usuario", 
-    demoUrl: "/portfolio/theses/th2", // Placeholder link
-    demoLinkText: "Ver investigación" 
-  },
-  // Add more thesis items if needed
-];
 
 export default function PortfolioPage() {
   return (
     <>
       <PageHeader
         title="Nuestro Portafolio"
-        subtitle="Una muestra de nuestro compromiso con la excelencia y la innovación."
+        subtitle="Una muestra de nuestro compromiso con la excelencia y la innovación en software y publicaciones."
       />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <Tabs defaultValue="software" className="w-full">
-          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-2 mb-8">
             <TabsTrigger value="software" className="flex items-center gap-2"><Briefcase className="h-4 w-4"/>Proyectos de Software</TabsTrigger>
-            <TabsTrigger value="articles" className="flex items-center gap-2"><BookOpen className="h-4 w-4"/>Publicaciones</TabsTrigger>
-            <TabsTrigger value="theses" className="flex items-center gap-2"><GraduationCap className="h-4 w-4"/>Tesis Asesoradas</TabsTrigger>
+            <TabsTrigger value="publications" className="flex items-center gap-2"><BookOpen className="h-4 w-4"/>Publicaciones</TabsTrigger>
           </TabsList>
           
           <TabsContent value="software">
@@ -100,18 +104,16 @@ export default function PortfolioPage() {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="articles">
+          <TabsContent value="publications">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {articleItems.map(item => (
+              {publicationItems.map(item => (
                 <ProductionCard key={item.id} production={item} />
               ))}
             </div>
-          </TabsContent>
-          <TabsContent value="theses">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {thesisItems.map(item => (
-                <ProductionCard key={item.id} production={item} />
-              ))}
+             <div className="mt-12 text-center">
+                <p className="text-muted-foreground">
+                  Más publicaciones y proyectos se añaden continuamente.
+                </p>
             </div>
           </TabsContent>
         </Tabs>

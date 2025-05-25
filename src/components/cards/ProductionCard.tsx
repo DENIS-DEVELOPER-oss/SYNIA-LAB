@@ -3,17 +3,25 @@
 
 import type { SVGProps } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tag } from "lucide-react"; // Using Tag for thematic area
+import { Tag, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { useState } from "react";
 
+export interface ProductionImage {
+  src: string;
+  alt: string;
+  hint: string;
+}
 export interface ProductionItem {
   id: string;
   title: string;
   category: 'Software' | 'Capítulo de Libro' | 'Artículo Científico' | 'Tesis Doctoral' | 'Tesis de Maestría' | 'Libro';
   thematicArea: string;
   summary: string;
-  videoUrl: string; // YouTube embed URL
+  videoUrl?: string; // YouTube embed URL, optional now
+  imageUrls?: ProductionImage[]; // For image carousel
   demoUrl: string;
   demoLinkText: string;
 }
@@ -23,18 +31,84 @@ interface ProductionCardProps {
 }
 
 export function ProductionCard({ production }: ProductionCardProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const isPublication = production.category === 'Capítulo de Libro' || production.category === 'Artículo Científico';
+
+  const handleNextImage = () => {
+    if (production.imageUrls) {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % production.imageUrls!.length);
+    }
+  };
+
+  const handlePrevImage = () => {
+    if (production.imageUrls) {
+      setCurrentImageIndex((prevIndex) => (prevIndex - 1 + production.imageUrls!.length) % production.imageUrls!.length);
+    }
+  };
+
   return (
     <Card className="flex flex-col h-full overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-      <div className="aspect-video overflow-hidden">
-        <iframe
-          src={production.videoUrl}
-          title={production.title}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="w-full h-full"
-        ></iframe>
-      </div>
+      {isPublication && production.imageUrls && production.imageUrls.length > 0 ? (
+        <div className="relative aspect-video overflow-hidden group">
+          <Image
+            src={production.imageUrls[currentImageIndex].src}
+            alt={production.imageUrls[currentImageIndex].alt}
+            layout="fill"
+            objectFit="cover"
+            data-ai-hint={production.imageUrls[currentImageIndex].hint}
+          />
+          {production.imageUrls.length > 1 && (
+            <>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handlePrevImage}
+                className="absolute top-1/2 left-1 -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Imagen anterior"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleNextImage}
+                className="absolute top-1/2 right-1 -translate-y-1/2 z-10 bg-black/30 hover:bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Siguiente imagen"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex space-x-1.5">
+                {production.imageUrls.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      currentImageIndex === index ? "bg-white scale-125" : "bg-white/60"
+                    } hover:bg-white transition-all`}
+                    aria-label={`Ir a imagen ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      ) : production.videoUrl ? (
+        <div className="aspect-video overflow-hidden">
+          <iframe
+            src={production.videoUrl}
+            title={production.title}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="w-full h-full"
+          ></iframe>
+        </div>
+      ) : (
+        <div className="aspect-video bg-muted flex items-center justify-center">
+          <p className="text-muted-foreground">Visual no disponible</p>
+        </div>
+      )}
       <CardHeader>
         <CardTitle className="text-lg">{production.title}</CardTitle>
         <div className="flex items-center text-xs text-muted-foreground pt-1">
@@ -48,7 +122,7 @@ export function ProductionCard({ production }: ProductionCardProps) {
       <CardFooter>
         <Button asChild variant="link" className="p-0 text-primary hover:underline">
           <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
-            {production.demoLinkText}
+            {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
           </Link>
         </Button>
       </CardFooter>
