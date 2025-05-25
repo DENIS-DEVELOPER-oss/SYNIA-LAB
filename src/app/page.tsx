@@ -1,15 +1,39 @@
 
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GraduationCap, Code, CheckSquare, ArrowRight } from "lucide-react"; 
+import { GraduationCap, Code, CheckSquare, ArrowRight, Settings, BookOpen, UserCircle, FileText } from "lucide-react"; 
 import { cn } from "@/lib/utils";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { ProduccionesDisponibles } from "@/components/sections/ProduccionesDisponibles";
 
-const featuredServices = [
+const generalLinks = [
+  {
+    title: "Nuestros Servicios",
+    description: "Descubre cómo podemos impulsar tus proyectos académicos y tecnológicos.",
+    icon: Settings,
+    iconColor: "text-primary",
+    link: "/services",
+  },
+  {
+    title: "Explorar Cursos",
+    description: "Capacítate con nuestros programas especializados y actualizados.",
+    icon: BookOpen,
+    iconColor: "text-primary",
+    link: "/courses",
+  },
+  {
+    title: "Plataforma Usuario",
+    description: "Accede a tu panel personalizado y gestiona tus recursos y proyectos.",
+    icon: UserCircle,
+    iconColor: "text-primary",
+    link: "/auth/signin",
+  },
+];
+
+const mainServices = [
   {
     title: "Asesoría en Tesis",
     description: "Orientación personalizada para tesis (pregrado, maestría, doctorado), del tema a la sustentación.",
@@ -27,7 +51,7 @@ const featuredServices = [
   {
     title: "Publicación Científica",
     description: "Apoyo integral en la redacción, edición y selección de revistas indexadas (Scielo, Scopus).",
-    icon: CheckSquare,
+    icon: FileText, // Changed from CheckSquare for better distinction
     iconColor: "text-primary",
     link: "/services#scientific-publishing", 
   },
@@ -41,18 +65,44 @@ export default function HomePage() {
       
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <PageHeader 
-            title="Nuestros Servicios Destacados"
-            subtitle="Impulsando la innovación y el conocimiento a través de soluciones expertas."
-            className="mb-12 text-center"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredServices.map((service) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {generalLinks.map((service) => (
               <Link key={service.title} href={service.link} className="block h-full group">
                 <Card 
                   className={cn(
                     "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
-                    "bg-card group-hover:border-2 group-hover:border-primary"
+                    "bg-card" // Removed hover border effect for these cards
+                  )}
+                >
+                  <div className={cn(
+                    "mb-6 flex h-20 w-20 items-center justify-center rounded-full",
+                    "bg-muted border"
+                  )}>
+                    <service.icon className={cn("h-10 w-10", service.iconColor)} />
+                  </div>
+                  <CardTitle className={cn("text-xl mb-3", "text-card-foreground")}> 
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className={cn("text-sm flex-grow", "text-muted-foreground")}>
+                    {service.description}
+                  </CardDescription>
+                </Card>
+              </Link>
+            ))}
+          </div>
+
+          <PageHeader 
+            title="Nuestros Servicios Principales"
+            subtitle="Impulsando la innovación y el conocimiento a través de soluciones expertas."
+            className="mb-12 text-center"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {mainServices.map((service) => (
+              <Link key={service.title} href={service.link} className="block h-full group">
+                <Card 
+                  className={cn(
+                    "flex flex-col items-center text-center p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105 h-full",
+                    "bg-card group-hover:border-2 group-hover:border-primary" // Added hover border effect for these cards
                   )}
                 >
                   <div className={cn(
