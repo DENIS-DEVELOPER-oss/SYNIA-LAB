@@ -42,7 +42,7 @@ export function HeroSection() {
   useEffect(() => {
     const slideInterval = setInterval(goToNext, AUTO_SLIDE_INTERVAL);
     return () => clearInterval(slideInterval);
-  }, []); // Removed currentIndex from dependencies to prevent interval reset on manual nav
+  }, []);
 
   return (
     <>
@@ -56,34 +56,28 @@ export function HeroSection() {
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
           poster="https://placehold.co/1920x1080.png" // Optional: shows an image while video loads
         >
-          {/* 
-            Replace with your video URL. 
-            Example from Pixabay: https://pixabay.com/videos/network-plexus-internet-connection-13745/ 
-            You'd download it and host it or use a direct link if allowed.
-            For this placeholder, I'll use a common stock video URL format, but it might not work long-term.
-          */}
           <source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4" />
           Tu navegador no soporta videos HTML5.
         </video>
         
-        {/* Overlay to ensure text readability - optional, adjust opacity as needed */}
+        {/* Overlay to ensure text readability */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-10"></div>
 
         <div className="container relative mx-auto px-4 z-20">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Columna Izquierda: Texto y Botones */}
-            <div className="text-center md:text-left">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <div className="text-center"> {/* Cambiado de md:text-left a text-center */}
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl text-primary-foreground">
                 <span className="block xl:inline">{SITE_NAME}</span>
               </h1>
-              <p className="mt-6 max-w-md mx-auto md:mx-0 text-lg font-light text-primary-foreground/90 sm:text-xl md:mt-8 md:max-w-3xl">
+              <p className="mt-6 max-w-md mx-auto text-lg font-light text-primary-foreground/90 sm:text-xl md:mt-8 md:max-w-3xl">
                 {SITE_SLOGAN}
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center md:justify-start gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-center gap-4">
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto group bg-sky-500 hover:bg-sky-600 text-primary-foreground transition-transform hover:scale-105"
+                  className="w-full sm:w-auto group bg-sky-500 hover:bg-sky-600 text-primary-foreground transition-transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <Link href="/services">
                     Nuestros Servicios
@@ -94,7 +88,7 @@ export function HeroSection() {
                   asChild
                   size="lg"
                   variant="ghost"
-                  className="w-full sm:w-auto text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground transition-transform hover:scale-105"
+                  className="w-full sm:w-auto text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground transition-transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <Link href="/courses">
                     <Play className="mr-2 h-5 w-5" />
@@ -105,7 +99,7 @@ export function HeroSection() {
                   asChild
                   size="lg"
                   variant="ghost"
-                  className="w-full sm:w-auto text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground transition-transform hover:scale-105"
+                  className="w-full sm:w-auto text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground transition-transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <Link href="/auth/signin">Plataforma Usuario</Link>
                 </Button>
