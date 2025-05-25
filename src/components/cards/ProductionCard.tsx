@@ -8,14 +8,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Tag, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 export interface ProductionImage {
   src: string;
@@ -30,7 +22,7 @@ export interface ProductionItem {
   summary: string;
   videoUrl?: string;
   imageUrls?: ProductionImage[];
-  demoUrl: string; // Still useful if we want a link inside the dialog or for other contexts
+  demoUrl: string;
   demoLinkText: string;
 }
 
@@ -129,39 +121,11 @@ export function ProductionCard({ production }: ProductionCardProps) {
         <CardDescription className="text-sm line-clamp-3">{production.summary}</CardDescription>
       </CardContent>
       <CardFooter>
-        {isPublication ? (
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="link" className="p-0 text-primary hover:underline">
-                {production.demoLinkText}
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[525px]">
-              <DialogHeader>
-                <DialogTitle className="text-primary">{production.title}</DialogTitle>
-                <DialogDescription className="pt-2 text-base text-foreground">
-                  {production.summary}
-                </DialogDescription>
-              </DialogHeader>
-              {/* Optionally, add a link to the full resource if demoUrl is relevant */}
-              {production.demoUrl && (
-                <div className="mt-4">
-                    <Button asChild variant="default">
-                        <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
-                            Ver recurso completo <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
-                        </Link>
-                    </Button>
-                </div>
-              )}
-            </DialogContent>
-          </Dialog>
-        ) : (
-          <Button asChild variant="link" className="p-0 text-primary hover:underline">
-            <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
-              {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
-            </Link>
-          </Button>
-        )}
+        <Button asChild variant="link" className="p-0 text-primary hover:underline">
+          <Link href={production.demoUrl} target="_blank" rel="noopener noreferrer">
+            {production.demoLinkText} <ExternalLink className="ml-1.5 h-3.5 w-3.5"/>
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );
